@@ -43,7 +43,9 @@ if ($this->session->has_userdata('logged_in')) {
 	</style>
 	<div id="root">
 		<div id="id_login_bg">
-			<div class="container_login">
+			<spining-dots class="loading" id="loader_page" circle="2" borderWidth="4.5" width="150">
+			</spining-dots>
+			<div class="container_login" style="opacity:0">
 				<div id="hider_form"></div>
 				<div id="text_hider_form">
 					<img src="<?php echo base_url(); ?>/assets/img/sign_in.jpg" alt="">
@@ -134,6 +136,7 @@ if ($this->session->has_userdata('logged_in')) {
 	<script>
 		var base_url = `<?php echo base_url(); ?>`;
 	</script>
+	<script src="<?php echo base_url(); ?>assets/js/P/Loading.js"></script>
 	<script type="module" src="<?php echo base_url(); ?>assets/js/index_P.js"></script>
 </body>
 

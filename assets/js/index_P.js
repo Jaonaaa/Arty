@@ -1,9 +1,22 @@
 import { handleLogAll } from "./P/Login_.js";
 
+let container = document
+  .getElementById("root")
+  .querySelector(".container_login");
+let loader = document.getElementById("loader_page");
 window.addEventListener("load", () => {
-  handleLogAll();
+  loader.style.opacity = 0;
+  loader.style.transform = "translateY(-10rem)";
+  setTimeout(() => {
+    container.removeAttribute("style");
+    handleLogAll();
+  }, 200);
+  setTimeout(() => {
+    loader.parentElement.removeChild(loader);
+  }, 300);
 });
 
+// STYLE
 var styleHider = new CSSStyleSheet();
 styleHider.replaceSync(`
 #hider {

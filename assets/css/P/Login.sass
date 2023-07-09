@@ -1,11 +1,8 @@
-:root
-    --primary: rgb(100, 109, 234)
-    --primary-hovered: rgb(60, 68, 186)
 
 $breakpoint-sm: 576px
 $breakpoint-md: 768px
-$breakpoint-lg: 992px
-$breakpoint-xl: 1200px
+$breakpoint-xl: 992px
+$breakpoint-xl: 1150px
 $grey-text: rgb(88, 88, 88)
 
 @mixin media($breakpoint)
@@ -25,10 +22,16 @@ $grey-text: rgb(88, 88, 88)
     display: flex
     justify-content: center
     align-items: center
+#loader_page
+    position: absolute
+    margin: auto
+    transition: all 0.2s ease-in-out
 
-.container_login
+*.container_login
     width: 68vw
     height: 90vh
+    max-height: 51rem
+    transition: all 0.3s ease-in-out
     background: rgb(255, 255, 255)
     border-radius: 0.3%
     box-shadow: 0 0px 0.5rem 0.3rem rgba(73, 73, 73, 0.056)
@@ -49,7 +52,7 @@ $grey-text: rgb(88, 88, 88)
         overflow: hidden
         transition: all 0.2s ease-in-out
         @include flex_center_all()
-        @include media($breakpoint: $breakpoint-lg)
+        @include media($breakpoint: $breakpoint-xl)
             width: 100%
         .title_site_logo
             position: absolute
@@ -111,31 +114,42 @@ $grey-text: rgb(88, 88, 88)
                     font-size: 0.75rem
                     color: white
                     transition: all 0.5s ease-in-out
+                    @include media($breakpoint: $breakpoint-sm)
+                        font-size: 0.7rem
     form
-        width: 60%
+        width: 64%
         display: flex
         transition: all 0.2s ease-in-out
         flex-direction: column
-        @include media($breakpoint: $breakpoint-lg)
-            width: 55%
+        @include media($breakpoint: $breakpoint-xl)
+            width: 58%
         @include media($breakpoint: $breakpoint-md)
             width: 65%
+        @include media($breakpoint: $breakpoint-sm)
+            width: 75%
         .title_form
             font-size: 1.7rem
             font-family: Poppins_L
             margin-bottom: 0.4rem
             font-weight: bolder
-            @include media($breakpoint: $breakpoint-lg)
+            @include media($breakpoint: $breakpoint-xl)
                 font-size: 1.9rem
+            @include media($breakpoint: $breakpoint-sm)
+                font-size: 1.4rem
+
         .subtitle_form
             font-size: 0.83rem
             margin-bottom: 1.4rem
             color: $grey-text
+            @include media($breakpoint: $breakpoint-sm)
+                font-size: 0.75rem
         .input
             display: flex
             flex-direction: column
             position: relative
             margin: 7% 0
+            @include media($breakpoint: $breakpoint-sm)
+                margin: 6.5% 0
             label
                 position: absolute
                 top: 50%
@@ -145,6 +159,8 @@ $grey-text: rgb(88, 88, 88)
                 color: $grey-text
                 left: 4%
                 transform: translate(0,-50%)
+                @include media($breakpoint: $breakpoint-sm)
+                font-size: 0.8rem
             input
                 box-sizing: border-box
                 padding: 0.7rem 0.8rem
@@ -153,12 +169,13 @@ $grey-text: rgb(88, 88, 88)
                 border-radius: 0.2rem
                 border: none
                 transition: all 0.2s ease-in-out
-                box-shadow: 0 0 0.1rem 0.1rem rgba(99, 98, 98, 0.401)
+                box-shadow: 0 0 0.1rem 0.05rem rgba(99, 98, 98, 0.401)
                 outline: var(--primary)
                 font-family: Poppins
                 background: transparent
+
                 &:focus
-                    box-shadow: 0 0 0.2rem 0.1rem var(--primary)
+                    box-shadow: 0 0 0.2rem 0.05rem var(--primary)
                 &:focus + label
                     top: -30%
                     left: 1%
@@ -189,8 +206,10 @@ $grey-text: rgb(88, 88, 88)
     display: flex
     align-items: center
     margin: 1.3rem auto 1.2rem auto
-    font-size: 0.8em
+    font-size: 0.78em
     color: $grey-text
+    @include media($breakpoint: $breakpoint-sm)
+        font-size: 0.7rem
     .link
         color: var(--primary)
         font-weight: bolder
@@ -205,7 +224,9 @@ $grey-text: rgb(88, 88, 88)
             top: 130%
             @include flex_center_all()
             img
-                width: 141%
+                width: 131%
+                @include media($breakpoint: $breakpoint-sm)
+                    width: 120%
 .btn
     @include flex_center_all()
     box-sizing: border-box
@@ -239,7 +260,7 @@ $grey-text: rgb(88, 88, 88)
         position: relative
         align-items: center
         overflow: hidden
-        @include media($breakpoint: $breakpoint-lg)
+        @include media($breakpoint: $breakpoint-xl)
             width: 0
         .picture_slide
             min-width: 100%
@@ -394,16 +415,16 @@ $grey-text: rgb(88, 88, 88)
     img
         width: 40%
         @include media($breakpoint: $breakpoint-md)
-            width: 55%
+            width: 58%
         @include media($breakpoint: $breakpoint-sm)
             width: 65%
 
 .container_login
     .revert_left
-        @include media($breakpoint: $breakpoint-lg)
+        @include media($breakpoint: $breakpoint-xl)
             width: 0 !important
     .revert_right
-        @include media($breakpoint: $breakpoint-lg)
+        @include media($breakpoint: $breakpoint-xl)
             width: 100% !important
 
 @media (max-width: $breakpoint-sm)
@@ -414,7 +435,7 @@ $grey-text: rgb(88, 88, 88)
   // Styles for medium screens and above
   // ...
 
-@media (max-width: $breakpoint-lg)
+@media (max-width: $breakpoint-xl)
   // Styles for large screens and above
   // ...
 

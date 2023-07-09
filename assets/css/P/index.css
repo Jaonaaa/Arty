@@ -1,5 +1,21 @@
+:root {
+  --primary: rgb(100, 109, 234);
+  --primary-hovered: rgb(60, 68, 186);
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Poppins_L;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+spining-dots {
+  color: var(--primary);
 }/*# sourceMappingURL=index.css.map */
