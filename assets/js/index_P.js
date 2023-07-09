@@ -1,3 +1,9 @@
+import { handleLogAll } from "./P/Login_.js";
+
+window.addEventListener("load", () => {
+  handleLogAll();
+});
+
 var styleHider = new CSSStyleSheet();
 styleHider.replaceSync(`
 #hider {
