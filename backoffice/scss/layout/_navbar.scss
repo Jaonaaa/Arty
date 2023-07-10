@@ -1,0 +1,12 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 20px 10px;
+
+  &__logo {
+    cursor: pointer;
+    height: 40px;
+  }
+}
