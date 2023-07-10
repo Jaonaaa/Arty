@@ -63,34 +63,33 @@ if ($this->session->has_userdata('logged_in')) {
 
 					<form action="/" method="post" id="form_sign_in">
 						<div class="title_form" id="sign_in_title">
-							Welcome
+							Bienvenue
 							<?php echo $nom; ?>
 						</div>
 						<div class="subtitle_form">
-							Welcome back! Please enter your details
+							Veuillez entre vos données de connexion
 						</div>
 						<div class="input">
 							<input type="email" name="email_user" required id="email_user">
 							<label>Email</label>
-
 						</div>
 						<div class="input">
 							<input type="password" name="pwd_user" required id="pwd_user">
-							<label>Password</label>
+							<label>Mot de passe</label>
 						</div>
 						<div class="options_row">
 							<div class="option">
 							</div>
 							<div class="option">
-								<div class="link" id="forgot_pwd">Forgot password</div>
+								<div class="link" id="forgot_pwd">Mot de passe oublié</div>
 							</div>
 						</div>
 						<div class="btn large">
-							<button>Sign in</button>
+							<button>Se connecter</button>
 						</div>
 						<div class="sign_up_row">
-							Don't have an account ? <div class="link" id="sign_up_btn">
-								Sign up for free
+							Pas de compte ? <div class="link" id="sign_up_btn">
+								Incrivez-vous gratuitement
 								<div class="img_under_link">
 									<img src="<?php echo base_url(); ?>assets/img/under_link.png" alt="under_link">
 								</div>
@@ -106,15 +105,15 @@ if ($this->session->has_userdata('logged_in')) {
 					<div class="picture_slide" title="Fast Service"
 						subtitle="
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.">
-						<img src="<?php echo base_url(); ?>assets/img/login_1.jpg" alt="">
+						<img src="<?php echo base_url(); ?>assets/img/sign_in_1.webp" alt="">
 					</div>
 					<div class="picture_slide" title="Midddle speed Service" subtitle="
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.
 					">
-						<img src="<?php echo base_url(); ?>assets/img/login_2.jpg" alt="">
+						<img src="<?php echo base_url(); ?>assets/img/sign_in_2.webp" alt="">
 					</div>
 					<div class="picture_slide" title="Not a Service" subtitle="Hello World">
-						<img src="<?php echo base_url(); ?>assets/img/login_3.jpg" alt="">
+						<img src="<?php echo base_url(); ?>assets/img/sign_in_3.webp" alt="">
 					</div>
 
 					<div class="content_picture_container">

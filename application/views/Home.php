@@ -1,13 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-$nom = "";
-if ($this->session->has_userdata('logged_in')) {
-    $this->session->unset_userdata('logged_in');
-
-} else {
-    $nom = "back, Olivia";
-    $this->session->set_userdata('logged_in', "Hello");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +13,9 @@ if ($this->session->has_userdata('logged_in')) {
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/index.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/Home.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fonts/fontawesome-5/css/all.min.css">
+    <?php if ($users["data_user"] == null) { ?>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/Form.css">
+    <?php } ?>
 </head>
 
 <body>
@@ -39,12 +34,23 @@ if ($this->session->has_userdata('logged_in')) {
             font-family: Poppins_EB;
             src: url(<?php echo base_url(); ?>assets/fonts/Poppins/Poppins-ExtraBold.ttf);
         }
+
+        @font-face {
+            font-family: Dancing;
+            src: url(<?php echo base_url(); ?>assets/fonts/Dancing/DancingScript-Regular.ttf);
+        }
     </style>
     <?php include("Header.php"); ?>
     <div id="root">
         <div class="header_blanking"></div>
         <div class="container_home">
-            Peter
+            <?php
+            if ($users["data_user"] != null) {
+                include("Home_content.php");
+            } else {
+                include("Form_data_user.php");
+            }
+            ?>
         </div>
     </div>
     <script>

@@ -44,12 +44,35 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin: 0 0.53rem;
+  position: relative;
+  transition: all 0.2s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+#header .params .links .link_block::before {
+  content: "";
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  bottom: 0;
+  left: 0;
+  height: 0.17rem;
+  width: 0%;
+  border-radius: 0.4rem;
+  background: var(--primary);
+}
 #header .params .links .link_block:hover {
   color: var(--primary-hovered);
+}
+#header .params .links .link_block:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.17rem;
+  width: 50%;
+  border-radius: 0.4rem;
+  background: var(--primary);
 }
 #header .params .links .link_selected {
   color: var(--primary);
@@ -61,10 +84,17 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  transition: all 0.2s ease-in-out;
   height: 0.17rem;
   width: 100%;
   border-radius: 0.4rem;
   background: var(--primary);
+}
+#header .params .links .link_selected:hover {
+  color: var(--primary);
+}
+#header .params .links .link_selected:hover::before {
+  width: 100%;
 }
 #header .user_param {
   display: flex;
@@ -100,7 +130,9 @@
 .container_home {
   width: 100%;
   box-sizing: border-box;
-  padding: 1rem 1.6rem 3rem 1.6rem;
+  padding: 1rem 4% 3rem 4%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=Home.css.map */
