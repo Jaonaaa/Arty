@@ -13,15 +13,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="params">
         <div class="links">
             <div class="link_block link_selected">Home</div>
-            <div class="link_block">Something</div>
-            <div class="link_block">Store</div>
-            <div class="link_block">About us</div>
+            <div class="link_block">Regimes</div>
+            <div class="link_block">Bon d'achat </div>
+            <div class="link_block">A propos</div>
         </div>
         <div class="user_param">
             <div class="block_user">
                 <div class="user_pic">
                 </div>
-                <div class="username">Peter</div>
+                <div class="username">
+                    <?php echo $users["nom"] ?>
+                </div>
             </div>
         </div>
     </div>

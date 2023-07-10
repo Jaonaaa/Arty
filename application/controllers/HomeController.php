@@ -12,7 +12,8 @@ class HomeController extends CI_Controller
 
     public function index()
     {
-        $this->load->view('Home');
+        $data["users"] = $this->session->userdata('user');
+        $this->load->view('Home', $data);
     }
 
     public function log_out()

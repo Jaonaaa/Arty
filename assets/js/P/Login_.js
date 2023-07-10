@@ -1,3 +1,5 @@
+import { createSidePopUp } from "./PopUp.js";
+
 export function setUpSwap() {
   let sign_up = document.getElementById("sign_up_btn");
   let sign_in = document.getElementById("sign_in_btn");
@@ -73,10 +75,10 @@ export function makeFormSignIn(left_container, right_container) {
 
 					<form action="/" method="post" id="form_sign_in">
 						<div class="title_form" id="sign_in_title">
-							Welcome
+							Bienvenue
 						</div>
 						<div class="subtitle_form">
-							Welcome back! Please enter your details
+            Veuillez entre vos données de connexion.
 						</div>
 						<div class="input">
 							<input type="email" name="email_user" required id="email_user">
@@ -85,21 +87,21 @@ export function makeFormSignIn(left_container, right_container) {
 						</div>
 						<div class="input">
 							<input type="password" name="pwd_user" required id="pwd_user">
-							<label>Password</label>
+							<label>Mot de passe</label>
 						</div>
 						<div class="options_row">
 							<div class="option">
 							</div>
 							<div class="option">
-								<div class="link" id="forgot_pwd">Forgot password</div>
+								<div class="link" id="forgot_pwd">Mot de passe oublié</div>
 							</div>
 						</div>
 						<div class="btn large">
-							<button>Sign in</button>
+							<button>Se connecter</button>
 						</div>
 						<div class="sign_up_row">
-							Don't have an account ? <div class="link" id="sign_up_btn">
-								Sign up for free
+                  Pas de compte ?  <div class="link" id="sign_up_btn">
+                  Incrivez-vous gratuitement
 								<div class="img_under_link">
 									<img src="${base_url}assets/img/under_link.png" alt="under_link">
 								</div>
@@ -114,15 +116,15 @@ export function makeFormSignIn(left_container, right_container) {
 					<div class="picture_slide" title="Fast Service"
 						subtitle="
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.">
-						<img src="${base_url}assets/img/login_1.jpg" alt="">
+						<img src="${base_url}assets/img/sign_in_1.webp" alt="">
 					</div>
 					<div class="picture_slide" title="Midddle speed Service" subtitle="
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.
 					">
-						<img src="${base_url}assets/img/login_2.jpg" alt="">
+						<img src="${base_url}assets/img/sign_in_2.webp" alt="">
 					</div>
 					<div class="picture_slide" title="Not a Service" subtitle="Hello World">
-						<img src="${base_url}assets/img/login_3.jpg" alt="">
+						<img src="${base_url}assets/img/sign_in_3.webp" alt="">
 					</div>
 
 					<div class="content_picture_container">
@@ -136,7 +138,6 @@ export function makeFormSignIn(left_container, right_container) {
 							</div>
 						</div>
 					</div>
-
    `;
 }
 export function makeFormSignUp(left_container, right_container) {
@@ -154,15 +155,15 @@ export function makeFormSignUp(left_container, right_container) {
 					</div>
 					<div class="picture_slide" title="Fast Service" subtitle="
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.">
-						<img src="${base_url}assets/img/login_1r.jpg" alt="">
+						<img src="${base_url}assets/img/sign_up_1.webp" alt="">
 					</div>
 					<div class="picture_slide" title="Midddle speed Service" subtitle="
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.
 					">
-						<img src="${base_url}assets/img/login_2.jpg" alt="">
+						<img src="${base_url}assets/img/sign_up_2.webp" alt="">
 					</div>
 					<div class="picture_slide" title="Inscription ony e" subtitle="Hello World">
-						<img src="${base_url}assets/img/login_1.jpg" alt="">
+						<img src="${base_url}assets/img/sign_up_3.webp" alt="">
 					</div>
 					<div class="content_picture_container">
 						<div class="bottom_section">
@@ -187,30 +188,36 @@ export function makeFormSignUp(left_container, right_container) {
 					</div>
 					<form action="/" method="post" id="form_sign_up">
 						<div class="title_form" id="sign_in_title">
-							Sign Up
+							Incription
 						</div>
 						<div class="subtitle_form">
-						 Please enter your details.
+              Veuillez entrer vos détails.
 						</div>
+
+          <div class="input">
+            <input type="text" name="name_user" required id="name_user">
+            <label>Votre nom</label>
+          </div>
+            <div class="input">
+            <input type="date" name="dtn_user" required id="dtn_user">
+            <label>Date de naissance</label>
+          </div>
 						<div class="input">
 							<input type="email" name="email_user" required id="email_user">
 							<label>Email</label>
 						</div>
 						<div class="input">
 							<input type="password" name="pwd_user" required id="pwd_user">
-							<label>Password</label>
+							<label>Mot de passe</label>
 						</div>
-            <div class="input">
-            <input type="password" name="pwd_user_confirm" required id="pwd_user_confirm">
-            <label>Confirm password</label>
-          </div>
+            
 				
 						<div class="btn large">
-							<button>Sign up</button>
+							<button>S'inscrire</button>
 						</div>
 						<div class="sign_up_row">
-							Already have an account ? <div class="link" id="sign_in_btn">
-								Sign in now
+							Vous avez déja un compte ? <div class="link" id="sign_in_btn">
+								Connectez-vous
 								<div class="img_under_link">
 									<img src="${base_url}assets/img/under_link.png" alt="under_link">
 								</div>
@@ -227,8 +234,13 @@ export function setUpInputs() {
     let input = block.querySelector("input");
     input.addEventListener("blur", () => {
       let content = input.value.trim();
-      if (content != "") label.classList.add("label-up");
-      else label.classList.remove("label-up");
+      if (content != "") {
+        label.classList.add("label-up");
+        input.style.color = "rgb(49, 49, 49)";
+      } else {
+        label.classList.remove("label-up");
+        input.removeAttribute("style");
+      }
     });
   });
 }
@@ -239,7 +251,6 @@ export function sliderPicture() {
 function clearPicIntervale() {
   let container_pics = document.querySelector(".container_login");
   let id = +container_pics.getAttribute("id_int");
-  console.log("Cleared ", id);
   clearInterval(id);
 }
 function automatisationSlider() {
@@ -376,6 +387,7 @@ export function setUpForm() {
     if (idForm == "form_sign_in") {
       sign_in(form);
     } else if (idForm == "form_sign_up") {
+      sign_up(form);
     }
   });
 }
@@ -396,18 +408,19 @@ export function getTheBoy() {
   }
   return xhr;
 }
+
 function sign_in(form) {
   let xhr = getTheBoy();
   let formData = new FormData(form);
-  formData.append("id", "popo");
-
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {
         var retour = JSON.parse(xhr.responseText);
         if (retour.status == "error") {
+          createSidePopUp(retour.details, "error");
         } else {
-          window.location = `${base_url}Home`;
+          console.log(retour);
+          window.location = `${base_url}HomeController`;
         }
       } else {
         console.log(xhr.status);
@@ -417,7 +430,7 @@ function sign_in(form) {
   xhr.addEventListener("error", function (event) {
     alert("Oups! Quelque chose s'est mal passé lors de la publication .");
   });
-  xhr.open("POST", `${base_url}index.php/Login/connectionUser`, true);
+  xhr.open("POST", `${base_url}index.php/LoginController/sign_in`, true);
   xhr.send(formData);
 }
 function sign_up(form) {
@@ -429,8 +442,12 @@ function sign_up(form) {
       if (xhr.status == 200) {
         var retour = JSON.parse(xhr.responseText);
         if (retour.status == "error") {
+          createSidePopUp(retour.details, "error");
         } else {
-          window.location = `${base_url}Home`;
+          console.log(retour);
+          window.location = `${base_url}index.php/LoginController/sign_in_forced/${(
+            "" + retour.email
+          ).replace("@", "arrow_base_xr")}/${retour.pwd}`;
         }
       } else {
         console.log(xhr.status);
@@ -438,8 +455,8 @@ function sign_up(form) {
     }
   };
   xhr.addEventListener("error", function (event) {
-    alert("Oups! Quelque chose s'est mal passé lors de la publication .");
+    alert("Oups! Quelque chose s'est mal passé .");
   });
-  xhr.open("POST", `${base_url}index.php/Login/inscription`, true);
+  xhr.open("POST", `${base_url}index.php/LoginController/sign_up`, true);
   xhr.send(formData);
 }
