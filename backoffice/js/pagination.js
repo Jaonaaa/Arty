@@ -81,5 +81,3 @@ export function paginate() {
   updateTable(1);
   renderPagination();
 }
-
-paginate();
