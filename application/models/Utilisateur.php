@@ -20,6 +20,29 @@ class Utilisateur extends CI_Model
 
 
 
+    public function insertDétails_User($idGenre, $taille, $poids, $id_user)
+    {
+        $this->load->model("MyException");
+        $connection = $this->db;
+        $connection->trans_begin();
+        $id_details = nextval('sequence_details_utilisateur');
+        $query = "INSERT INTO detail_utilisateur VALUES (%s,%s,%s,%s,%s)";
+        $query = sprintf(
+            $query, $connection->escape($id_details), $connection->escape($idGenre),
+            $connection->escape($poids),
+            $connection->escape($taille),
+            $connection->escape($id_user)
+        );
+        $connection->query($query);
+        $error = $this->MyException->errorDB($connection);
+        if ($error) {
+            return $this->MyException->getErrorMessage();
+        } else {
+            $connection->trans_commit();
+            return json_encode(array("status" => "good", "details" => "Details user inseré"));
+        }
+
+    }
 
 
 

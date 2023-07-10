@@ -8,6 +8,7 @@ handleForm();
 function handleForm() {
   let forms = document.querySelectorAll(".form");
   let index = 0;
+
   forms.forEach((form, index) => {
     if (index == 0) form.style.display = "flex";
   });
@@ -26,10 +27,61 @@ function handleForm() {
       let mesuresation = getMesuration();
       if (mesuresation != undefined) {
         console.log(mesuresation);
-        //changeText_btn_next("Valider");
+        register_user_data(1, mesuresation.taille, mesuresation.poids);
+        index = 0;
       }
     }
   });
+}
+
+export function getTheBoy() {
+  let xhr;
+  try {
+    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+  } catch (e) {
+    try {
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (e2) {
+      try {
+        xhr = new XMLHttpRequest();
+      } catch (e3) {
+        xhr = false;
+      }
+    }
+  }
+  return xhr;
+}
+
+function register_user_data(idGenre, taille, poids) {
+  let xhr = getTheBoy();
+  let formData = new FormData();
+  formData.append("idGenre", idGenre);
+  formData.append("taille", taille);
+  formData.append("poids", poids);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        var retour = JSON.parse(xhr.responseText);
+        if (retour.status == "error") {
+          createSidePopUp(retour.details, "error");
+        } else {
+          console.log(retour);
+          //window.location = `${base_url}HomeController`;
+        }
+      } else {
+        console.log(xhr.status);
+      }
+    }
+  };
+  xhr.addEventListener("error", function (event) {
+    alert("Oups! Quelque chose s'est mal passé .");
+  });
+  xhr.open(
+    "POST",
+    `${base_url}index.php/InsertController/insert_details_user`,
+    true
+  );
+  xhr.send(formData);
 }
 
 function changeText_btn_next(text) {
