@@ -42,13 +42,15 @@ create table type_repas(
     id_type_repas varchar(30) primary key,
     nom varchar(50)
 );
+
 <-----------TABLE REPAS------------------->
 create table repas(
     id_repas varchar(30) primary key,
-    id_type_repas varchar(30),
-    nom varchar(50),
-    photo varchar(50),
-    calorie int,
+    id_type_repas varchar(30) not null,
+    nom varchar(50) not null,
+    photo varchar(50) not null,
+    calorie int not null,
+    prix double not null,
     foreign key (id_type_repas) references type_repas(id_type_repas)
 );
 

@@ -1,3 +1,4 @@
+import { renderMeal } from "../pages/meal.js";
 import { renderMealCategory } from "../pages/meal_category.js";
 import { renderRechargeCode } from "../pages/recharge_code.js";
 import { renderSport } from "../pages/sport.js";
@@ -39,6 +40,13 @@ typeAliment.addEventListener("click", () => {
   resetSidebarItems();
   typeAliment.classList.add("active");
   renderMealCategory();
+});
+
+let repas = document.getElementById("repas__item");
+repas.addEventListener("click", () => {
+  resetSidebarItems();
+  repas.classList.add("active");
+  renderMeal();
 });
 
 /**
