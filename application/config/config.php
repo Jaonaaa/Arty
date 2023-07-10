@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | http://arty.rf.gd/
 http://localhost:81/Arty/
 */
-$config['base_url'] = ' http://arty.rf.gd/';
+$config['base_url'] = 'http://localhost:81/Arty/';
 
 /*
 |--------------------------------------------------------------------------
