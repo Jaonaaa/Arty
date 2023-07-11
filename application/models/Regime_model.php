@@ -7,6 +7,40 @@ class Regime_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function price_day($id_regime) {
+    $query = "
+      SELECT
+        n_jour,
+        SUM(prix) AS prix
+      FROM
+        regime_repas
+        JOIN
+          repas ON regime_repas.id_repas = repas.id_repas
+        WHERE id_regime = '$id_regime'
+        GROUP BY n_jour
+        ORDER BY n_jour ASC
+    ";
+    $result = $this->db->query($query);
+    return $result->result_array();
+  }
+
+  public function find_meals($id_regime) {
+    $query = "
+      SELECT
+        DISTINCT(repas.id_repas),
+        photo,
+        nom,
+        calorie,
+        prix
+      FROM
+        regime_repas
+        JOIN repas ON regime_repas.id_repas = repas.id_repas
+        WHERE id_regime = '$id_regime'
+    ";
+    $result = $this->db->query($query);
+    return $result->result_array();
+  }
+
   public function insert($nom, $duree, $breakfast, $lunch, $diner) {
     $newId = nextval("sequence_regime");
     $newId = nextId("regime", $newId);

@@ -8,6 +8,20 @@ class Recharge_code extends CI_Controller {
     echo json_encode($this->Recharge_code_model->find_all());
   }
 
+  public function query_code() {
+    $this->load->model("Recharge_code_model");
+    echo json_encode($this->Recharge_code_model->query_code());
+  }
+
+  public function confirm() {
+    $id_utilisateur = $this->input->get("id_utilisateur");
+    $id_code_recharge = $this->input->get("id_code_recharge");
+
+    $this->load->model("Recharge_code_model");
+    $this->Recharge_code_model->confirm($id_utilisateur, $id_code_recharge);
+    echo 1;
+  }
+
   public function insert() {
     $this->load->model("Recharge_code_model");
     $code = $this->input->get("code");

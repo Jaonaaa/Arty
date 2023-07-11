@@ -8,6 +8,18 @@ class Regime extends CI_Controller {
     echo json_encode($this->Regime_model->find_all());
   }
 
+  public function price_day() {
+    $id_regime = $this->input->get("regime");
+    $this->load->model("Regime_model");
+    echo json_encode($this->Regime_model->price_day($id_regime));
+  }
+
+  public function find_meals() {
+    $id_regime = $this->input->get("regime");
+    $this->load->model("Regime_model");
+    echo json_encode($this->Regime_model->find_meals($id_regime));
+  }
+
   public function insert() {
     $nom = $this->input->post("nom");
     $duree = $this->input->post("duree");

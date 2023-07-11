@@ -3,6 +3,11 @@
   gap: 20px;
   flex-wrap: wrap;
   font-family: var(--font);
+  margin-top: 20px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 
   .meal__card {
     border-radius: 20px;
