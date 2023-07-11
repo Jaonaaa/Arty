@@ -16,7 +16,7 @@ if ($this->session->has_userdata('logged_in')) {
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Arty</title>
+	<title>Eat</title>
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>assets/icon/Arty_logo.ico" type="image/x-icon">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/PopUp.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/index.css">
@@ -102,7 +102,7 @@ if ($this->session->has_userdata('logged_in')) {
 				<div class="picture_form_container" id="rigth_container">
 					<div id="controller_slider">
 					</div>
-					<div class="picture_slide" title="Fast Service" subtitle="
+					<div class="picture_slide" title="Une alimentation saine" subtitle="
 						Transformez votre corps, vivez en meilleure santé et atteignez vos objectifs 
 						de remise en forme avec notre programme de régime personnalisé. 
 						Découvrez une nouvelle version de vous-même et adoptez un mode de vie équilibré pour une transformation durable.
@@ -115,7 +115,10 @@ if ($this->session->has_userdata('logged_in')) {
 					">
 						<img src="<?php echo base_url(); ?>assets/img/sign_in_2.webp" alt="">
 					</div>
-					<div class="picture_slide" title="Not a Service" subtitle="Hello World">
+					<div class="picture_slide" title="Livraison rapide" subtitle="
+					Profitez d'une livraison rapide de repas sains et équilibrés directement chez vous, 
+					pour une remise en forme efficace sans compromis sur la qualité. 
+					">
 						<img src="<?php echo base_url(); ?>assets/img/sign_in_3.webp" alt="">
 					</div>
 

@@ -79,3 +79,7 @@ export function removeMiddlePopUp() {
     document.body.removeChild(document.getElementById("middle-popUp"));
   }
 }
+
+if (bon_achat) {
+  createSidePopUp("Demande envoyé", "good");
+}

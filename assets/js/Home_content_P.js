@@ -1,7 +1,6 @@
 setUpRegimeParcours();
 function setUpRegimeParcours() {
   let btn = document.getElementById("go_regime");
-  console.log(btn);
   btn.addEventListener("click", () => {
     moveHomePic();
   });
@@ -19,30 +18,50 @@ function moveHomePic() {
   }, 1300);
 }
 
-function swapContent(index, to_do) {
+async function swapContent(index, to_do) {
   let main = document.querySelector(".main_content");
+  console.log("index => ", index);
   if (index == 1) {
     main.innerHTML = firstContent();
     setUpWhatToDo();
+    setTimeout(() => {
+      showContent();
+    }, 200);
   } else if (index == 2) {
     removeContent();
-    main.innerHTML = secondContent(to_do);
-    setUpBackArrow(index - 1);
-    setUpPoids();
+    await getAllPoids().then((data) => {
+      main.innerHTML = secondContent(to_do, data.details);
+      setUpBackArrow(index - 1);
+      setUpPoids();
+      setTimeout(() => {
+        showContent();
+      }, 200);
+    });
+
+    /////
   } else if (index == 3) {
     removeContent();
-    main.innerHTML = thirdContent();
-    setUpBackArrow(index - 1);
-    setUpDuration();
+    await getAllDuration().then((data) => {
+      main.innerHTML = thirdContent(data.details);
+      setUpBackArrow(index - 1);
+      setUpDuration();
+      setTimeout(() => {
+        showContent();
+      }, 200);
+    });
+    /////
   } else if (index == 4) {
     removeContent();
-    main.innerHTML = suggestionsContent(null);
-    setUpBackArrow(index - 1);
-    setUpSuggestions();
+    await getSuggestions(getAllDataForSuggestion()).then((data) => {
+      main.innerHTML = suggestionsContent(null);
+      setUpBackArrow(index - 1);
+      setUpSuggestions();
+      /////
+      setTimeout(() => {
+        showContent();
+      }, 200);
+    });
   }
-  setTimeout(() => {
-    showContent();
-  }, 200);
 }
 function setUpWhatToDo() {
   let choices = document.querySelectorAll(".choice");
@@ -53,10 +72,20 @@ function setUpWhatToDo() {
       mainContent.setAttribute("to_do", to_do);
       removeContent();
       setTimeout(() => {
-        swapContent(2, to_do);
+        let data = getAllDataForSuggestion();
+        if (data.to_do == "imc") swapContent(3, to_do);
+        else swapContent(2, to_do);
       }, 400);
     });
   });
+}
+
+function getAllDataForSuggestion() {
+  let main = document.querySelector(".main_content");
+  let to_do = main.getAttribute("to_do");
+  let poids = main.getAttribute("poids");
+  let duration = main.getAttribute("duration");
+  return { duration: duration, poids: poids, to_do: to_do };
 }
 
 function setUpPoids() {
@@ -107,6 +136,9 @@ function setUpSuggestions() {
 function setUpBackArrow(index) {
   let arrow_back = document.getElementById("arrow_back");
   arrow_back.addEventListener("click", () => {
+    let data = getAllDataForSuggestion();
+    if (data.to_do == "imc") index -= 1;
+    if (index == 0) index = 1;
     back(index);
   });
 }
@@ -116,6 +148,7 @@ function showContent() {
   center_container.style.opacity = 1;
   center_container.style.transform = "translateY(0)";
 }
+
 function removeContent() {
   let center_container = document.getElementById("center_container");
   center_container.style.opacity = 0;
@@ -136,9 +169,9 @@ function firstContent() {
             Vous voulez faire quoi?
         </div>
         <div class="choice_blocks">
-            <div class="choice" to_do="perdre">
-                <div class="img">
-                    <img src="${base_url}assets/img/sign_in_1.webp" alt="">
+            <div class="choice " to_do="perdre">
+                <div class="img verticale">
+                    <img src="${base_url}assets/img/perdre_poids.png" alt="">
                 </div>
                 <div class="label">
                     Perdre du poids
@@ -146,12 +179,21 @@ function firstContent() {
             </div>
             <div class="choice" to_do="prendre">
                 <div class="img">
-                    <img src="${base_url}assets/img/sign_in_1.webp" alt="">
+                    <img src="${base_url}assets/img/prendre_poids.png" alt="">
                 </div>
                 <div class="label">
                     Prendre du poids
                 </div>
             </div>
+
+            <div class="choice" to_do="imc">
+            <div class="img">
+                <img src="${base_url}assets/img/prendre_poids.png" alt="">
+            </div>
+            <div class="label">
+                Atteindre son IMC idéal
+            </div>
+        </div>
 
         </div>
     </div>
@@ -159,10 +201,27 @@ function firstContent() {
   return content;
 }
 
-function secondContent(to_do) {
+function secondContent(to_do, data) {
   if (to_do == undefined) {
     to_do = document.querySelector(".main_content").getAttribute("to_do");
   }
+  let row_poids = () => {
+    let rows = "";
+    data.forEach((dat, index) => {
+      let debut = index == 0 ? 0 : data[index - 1].poids;
+      let fin = data[index].poids;
+
+      rows += `<div class="row_choice">
+      <div class="index_row">
+          ${index + 1} -
+      </div>
+      <div class="data_row" value="${fin}">
+          ${debut} - ${fin}kg
+      </div>
+    </div>`;
+    });
+    return rows;
+  };
   let content = `
     <div id="center_container">
     <div id="arrow_back">
@@ -172,37 +231,31 @@ function secondContent(to_do) {
         Vous voulez ${to_do} combien de poids?
     </div>
     <div class="list_choice">
-        <div class="row_choice">
-            <div class="index_row">
-                1 -
-            </div>
-            <div class="data_row" value="10">
-                5 - 10kg
-            </div>
-        </div>
-        <div class="row_choice">
-            <div class="index_row">
-                2 -
-            </div>
-            <div class="data_row" value="15">
-                10 - 15kg
-            </div>
-        </div>
-        <div class="row_choice">
-            <div class="index_row">
-                3 -
-            </div>
-            <div class="data_row" value="20">
-                15 - 20kg
-            </div>
-        </div>
+        ${row_poids()}
     </div>
 </div>
     `;
   return content;
 }
 
-function thirdContent() {
+function thirdContent(data) {
+  let row_duration = () => {
+    let rows = "";
+    data.forEach((dat, index) => {
+      let debut = index == 0 ? 0 : data[index - 1].nombre_jour;
+      let fin = data[index].nombre_jour;
+      rows += `<div class="row_choice">
+      <div class="index_row">
+          ${index + 1} -
+      </div>
+      <div class="data_row" value="${fin}">
+           ${fin} jour
+      </div>
+    </div>`;
+    });
+    return rows;
+  };
+
   let content = `
     <div id="center_container">
     <div id="arrow_back">
@@ -212,30 +265,7 @@ function thirdContent() {
         Pendant quelle durée?
     </div>
     <div class="list_choice">
-        <div class="row_choice">
-            <div class="index_row">
-                1 -
-            </div>
-            <div class="data_row" value="30">
-                15 - 30 jour
-            </div>
-        </div>
-        <div class="row_choice">
-            <div class="index_row">
-                2 -
-            </div>
-            <div class="data_row" value="45">
-                30 - 45 jour
-            </div>
-        </div>
-        <div class="row_choice">
-            <div class="index_row">
-                3 -
-            </div>
-            <div class="data_row" value="60">
-                45 - 60kg
-            </div>
-        </div>
+        ${row_duration()}
     </div>
 </div>
     `;
@@ -285,4 +315,118 @@ function suggestionsContent(data) {
 </div>
       `;
   return content;
+}
+
+async function getAllPoids() {
+  let xhr = getTheBoy();
+  let newPromise = new Promise(function (resolve, reject) {
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          var retour = JSON.parse(xhr.responseText);
+          if (retour.status == "error") {
+            createSidePopUp(retour.details, "error");
+            reject("Erreur" + retour.details);
+          } else {
+            console.log(retour);
+            resolve(retour);
+          }
+        } else {
+          console.log(xhr.status);
+        }
+      }
+    };
+    xhr.addEventListener("error", function (event) {
+      alert("Oups! Quelque chose s'est mal passé .");
+    });
+    xhr.open("POST", `${base_url}index.php/HomeController/getChoixPoids`, true);
+    xhr.send(null);
+  });
+  return newPromise;
+}
+
+async function getAllDuration() {
+  let xhr = getTheBoy();
+  let newPromise = new Promise(function (resolve, reject) {
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          var retour = JSON.parse(xhr.responseText);
+          if (retour.status == "error") {
+            createSidePopUp(retour.details, "error");
+            reject("Erreur" + retour.details);
+          } else {
+            console.log(retour);
+            resolve(retour);
+          }
+        } else {
+          console.log(xhr.status);
+        }
+      }
+    };
+    xhr.addEventListener("error", function (event) {
+      alert("Oups! Quelque chose s'est mal passé .");
+    });
+    xhr.open(
+      "POST",
+      `${base_url}index.php/HomeController/getChoixDuration`,
+      true
+    );
+    xhr.send(null);
+  });
+  return newPromise;
+}
+export function getTheBoy() {
+  let xhr;
+  try {
+    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+  } catch (e) {
+    try {
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (e2) {
+      try {
+        xhr = new XMLHttpRequest();
+      } catch (e3) {
+        xhr = false;
+      }
+    }
+  }
+  return xhr;
+}
+
+async function getSuggestions(data) {
+  let xhr = getTheBoy();
+  let formData = new FormData();
+  formData.append("duration", data.duration);
+  formData.append("type", data.to_do);
+  formData.append("poids", data.poids);
+
+  let newPromise = new Promise(function (resolve, reject) {
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          var retour = JSON.parse(xhr.responseText);
+          if (retour.status == "error") {
+            createSidePopUp(retour.details, "error");
+            reject("Erreur" + retour.details);
+          } else {
+            console.log(retour);
+            resolve(retour);
+          }
+        } else {
+          console.log(xhr.status);
+        }
+      }
+    };
+    xhr.addEventListener("error", function (event) {
+      alert("Oups! Quelque chose s'est mal passé .");
+    });
+    xhr.open(
+      "POST",
+      `${base_url}index.php/HomeController/get_suggestions`,
+      true
+    );
+    xhr.send(formData);
+  });
+  return newPromise;
 }

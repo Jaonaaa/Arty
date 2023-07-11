@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+$porte_monnaie = $users['monnaie'];
 ?>
 <div id="header">
     <div class="logo_site">
@@ -19,6 +20,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div class="link_block"><a class="<?php echo $ind == "bon_achat" ? "link_selected" : "" ?>"
                     href="<?php echo base_url(); ?>HomeController/bon_achat">Bon d'achat </a> </div>
             <div class="link_block"><a href="<?php echo base_url(); ?>HomeController/log_out">Deconnexion</a></div>
+        </div>
+        <div class="porte_monnaie">
+
+            <div class="monnaie">
+                <?php echo $porte_monnaie["valeur"] ?>
+            </div>
+            <div class="monnaie_icon">
+                $
+            </div>
         </div>
         <div class="user_param">
             <div class="block_user">
