@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LOgin backoffice</title>
+  <title>Login backoffice</title>
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/icon/Arty_logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="<?php echo base_url("backoffice/css/font.css"); ?>" />
   <link rel="stylesheet" href="<?php echo base_url("backoffice/css/style.css"); ?>" />
 </head>
+
 <body>
   <div class="login__container">
-    <form method="post" action="<?php echo base_url("backOfficeController/sign_in"); ?>"  class="form">
+    <form method="post" action="<?php echo base_url("backOfficeController/sign_in"); ?>" class="form">
       <h1 class="form__title">Backoffice</h1>
       <div class="input__container">
         <label for="email">Adresse e-mail</label>
@@ -23,4 +26,5 @@
     </form>
   </div>
 </body>
+
 </html>
