@@ -1,7 +1,7 @@
 <div class="main_content">
     <div id="left_container">
         <div class="img_container">
-            <img src="<?php echo base_url(); ?>assets/img/sign_in_1.webp" alt="">
+            <img src="<?php echo base_url(); ?>assets/img/home.png" alt="">
         </div>
     </div>
     <div id="right_container">

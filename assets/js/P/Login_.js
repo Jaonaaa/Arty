@@ -6,11 +6,11 @@ export function setUpSwap() {
   //
   if (sign_up != undefined) {
     sign_up.addEventListener("click", () => {
-      showSwaper(`${base_url}assets/img/sign_up.jpg`, 0);
+      showSwaper(`${base_url}assets/img/sign_up.png`, 0);
     });
   } else {
     sign_in.addEventListener("click", () => {
-      showSwaper(`${base_url}assets/img/sign_in.jpg`, 1);
+      showSwaper(`${base_url}assets/img/sign_in.png`, 1);
     });
   }
 }
@@ -113,17 +113,24 @@ export function makeFormSignIn(left_container, right_container) {
   right_container.innerHTML = `
   <div id="controller_slider">
 					</div>
-					<div class="picture_slide" title="Fast Service"
+					<div class="picture_slide" title="Une alimentation saine"
 						subtitle="
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.">
+            Transformez votre corps, vivez en meilleure santé et atteignez vos objectifs 
+						de remise en forme avec notre programme de régime personnalisé. 
+						Découvrez une nouvelle version de vous-même et adoptez un mode de vie équilibré pour une transformation durable.
+          ">
 						<img src="${base_url}assets/img/sign_in_1.webp" alt="">
 					</div>
-					<div class="picture_slide" title="Midddle speed Service" subtitle="
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.
-					">
+					<div class="picture_slide" title="Un poids idéal" subtitle="
+          Découvrez votre poids idéal et réalisez une transformation incroyable. Trouvez l'équilibre parfait pour votre corps, atteignez votre poids idéal et vivez en pleine santé. 
+					Libérez le meilleur de vous-même et embrassez une vie épanouissante.
+          ">
 						<img src="${base_url}assets/img/sign_in_2.webp" alt="">
 					</div>
-					<div class="picture_slide" title="Not a Service" subtitle="Hello World">
+					<div class="picture_slide" title="Livraison rapide" subtitle="
+          Profitez d'une livraison rapide de repas sains et équilibrés directement chez vous, 
+					pour une remise en forme efficace sans compromis sur la qualité. 
+          ">
 						<img src="${base_url}assets/img/sign_in_3.webp" alt="">
 					</div>
 
@@ -153,16 +160,20 @@ export function makeFormSignUp(left_container, right_container) {
   left_container.innerHTML = `
   <div id="controller_slider">
 					</div>
-					<div class="picture_slide" title="Fast Service" subtitle="
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.">
+					<div class="picture_slide" title="Un corps parfait" subtitle="
+					Transformez votre corps et atteignez la perfection grâce à notre programme de régime sur mesure. 
+          Obtenez une silhouette sculptée, tonifiée et irrésistible en adoptant une alimentation saine et équilibrée
+          ">
 						<img src="${base_url}assets/img/sign_up_1.webp" alt="">
 					</div>
-					<div class="picture_slide" title="Midddle speed Service" subtitle="
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fuga sed tempora maxime eaque assumenda delectus dolore? Accusamus tempora, dolorum excepturi dolore nisi natus recusandae ex consectetur, dolorem vero aliquid.
-					">
+					<div class="picture_slide" title="Divers regime" subtitle="
+          Explorez nos options personnalisées, trouvez celui qui vous convient 
+          et lancez-vous dans une transformation positive pour une vie plus saine et épanouissante.					">
 						<img src="${base_url}assets/img/sign_up_2.webp" alt="">
 					</div>
-					<div class="picture_slide" title="Inscription ony e" subtitle="Hello World">
+					<div class="picture_slide" title="Plat délicieux" subtitle="
+          Découvrez notre sélection de plats délicieux et équilibrés, spécialement conçus pour combiner santé et saveurs exquises.
+          ">
 						<img src="${base_url}assets/img/sign_up_3.webp" alt="">
 					</div>
 					<div class="content_picture_container">

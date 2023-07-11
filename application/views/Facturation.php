@@ -14,6 +14,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/index.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/Home.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/footer.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/facturation.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fonts/fontawesome-5/css/all.min.css">
     <?php if ($users["data_user"] == null) { ?>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/Form.css">
@@ -49,7 +50,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <?php
             if ($users["data_user"] != null) {
                 ?>
-                Facturation
+                <div class="facturation">
+                    <div class="title">
+                        Facturation
+                    </div>
+                    <div class="subtitle">
+                        Voici les détails de votre facture
+                    </div>
+                    <div class="details_facture">
+                        <div class="row">
+                            <div class="label">Nom</div>
+                            <div class="value">PPP</div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Durée</div>
+                            <div class="value">15 j</div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Prix totale à payer </div>
+                            <div class="value">10000 AR</div>
+                        </div>
+                    </div>
+                    <div class="section_payement">
+                        <div class="btn">
+                            <button>Valider</button>
+                        </div>
+                    </div>
+                </div>
+
                 <?php
             } else {
                 include("Form_data_user.php");

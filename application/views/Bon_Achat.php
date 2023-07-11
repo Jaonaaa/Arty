@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-// var_dump($users);
+// var_dump($codes);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arty</title>
+    <title>Eat</title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/icon/Arty_logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/PopUp.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/index.css">
@@ -55,11 +55,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <tr>
                             <th>Code</th>
                             <th>Valeur</th>
+                            <th>Commander</th>
                         </tr>
-                        <tr>
-                            <td>EDEX#S</td>
-                            <td>15000 Ar</td>
-                        </tr>
+                        <?php foreach ($codes as $code) { ?>
+                            <tr>
+                                <td>
+                                    <?php echo $code["code"]; ?>
+                                </td>
+                                <td class="end">
+                                    <?php echo $code["prix"] ?> Ar
+                                </td>
+                                <td>
+                                    <a
+                                        href="<?php echo base_url(); ?>index.php/HomeController/requeste_bon_achat/<?php echo $code["id_code_recharge"]; ?>">
+                                        Utiliser </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </table>
                 </div>
 
@@ -73,7 +85,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <?php include("Footer.php"); ?>
     <script>
         var base_url = `<?php echo base_url(); ?>`;
+        <?php if (isset($_GET["setted"])) { ?>
+            var bon_achat = true;
+        <?php } ?>
     </script>
+    <script type="module" src="<?php echo base_url(); ?>assets/js/P/PopUp.js"></script>
 </body>
 
 </html>
