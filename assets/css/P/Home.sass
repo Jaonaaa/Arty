@@ -219,6 +219,7 @@ $grey-text: rgb(88, 88, 88)
     position: relative
     flex-direction: column
     opacity: 0
+    padding-bottom: 5rem
     transition: all 0.3s ease-in-out
     transform: translateY(30%)
     justify-content: center
@@ -250,10 +251,11 @@ $grey-text: rgb(88, 88, 88)
             transition: all 0.2s ease-in-out
             position: relative
             .img
-                width: 20rem
+                width: 14rem
                 border-radius: 0.5rem
                 overflow: hidden
-                height: 20rem
+                height: 14rem
+                padding: 1rem
                 transition: all 0.2s ease-in-out
                 @include flex_center_all()
                 &:hover
@@ -261,6 +263,13 @@ $grey-text: rgb(88, 88, 88)
                     transform: translateY(-10%)
                 img
                     width: 100%
+                    height: 100%
+            .verticale
+                img
+                    width: 60%
+                    height: 100%
+                .verticale
+                    width: 50%
                     height: 100%
             .label
                 position: absolute
@@ -312,6 +321,15 @@ table
         color: white
         height: 2.8rem
         padding: 0 4rem 0 1rem
+    .end
+        text-align: end
+    td
+        text-align: center
+        a
+            color: var(--primary)
+            font-weight: bolder
+            text-decoration: underline
+
 .suggestions_container
     display: flex
     width: 100%
@@ -358,3 +376,16 @@ table
             img
                 width: 100%
                 height: 100%
+.porte_monnaie
+    display: flex
+    margin: 0 0.3rem 0 1rem
+    justify-content: center
+    align-items: flex-end
+    font-size: 1.3rem
+    color: var(--secondary)
+    .monnaie
+
+        align-self: flex-end
+        margin-right: 0.3rem
+    .monnaie_icon
+        align-self: flex-end
