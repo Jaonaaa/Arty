@@ -1,13 +1,16 @@
 <?php
 
-class Regime_model extends CI_Model {
+class Regime_model extends CI_Model
+{
 
-  public function find_all() {
+  public function find_all()
+  {
     $query = $this->db->get("regime");
     return $query->result_array();
   }
 
-  public function price_day($id_regime) {
+  public function price_day($id_regime)
+  {
     $query = "
       SELECT
         n_jour,
@@ -24,7 +27,9 @@ class Regime_model extends CI_Model {
     return $result->result_array();
   }
 
-  public function find_meals($id_regime) {
+  public function find_meals($id_regime)
+  {
+
     $query = "
       SELECT
         DISTINCT(repas.id_repas),
@@ -41,7 +46,8 @@ class Regime_model extends CI_Model {
     return $result->result_array();
   }
 
-  public function insert($nom, $duree, $breakfast, $lunch, $diner) {
+  public function insert($nom, $duree, $breakfast, $lunch, $diner)
+  {
     $newId = nextval("sequence_regime");
     $newId = nextId("regime", $newId);
     $data = array(
@@ -51,7 +57,7 @@ class Regime_model extends CI_Model {
     );
     $this->db->insert("regime", $data);
 
-    for ($i=0; $i < count($breakfast); $i++) { 
+    for ($i = 0; $i < count($breakfast); $i++) {
       $bfID = nextval("sequence_regime_repas");
       $bfID = nextId("regimerepas", $bfID);
       $bf = array(

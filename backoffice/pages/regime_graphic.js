@@ -35,6 +35,7 @@ function back() {
  * @return {void}
  */
 function update(price_graphes, meals) {
+  console.log(meals);
   let root = document.getElementById("root");
   root.classList.add("invisible");
 

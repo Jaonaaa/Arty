@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 // var_dump($users);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,22 +60,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="details_facture">
                         <div class="row">
-                            <div class="label">Nom</div>
-                            <div class="value">PPP</div>
+                            <div class="label">Nom régime</div>
+                            <div class="value"> -
+                                <?php echo $regime["regime"]["nom"] ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="label">Nom Sport</div>
+                            <div class="value"> -
+                                <?php echo $sport["nom"] ?>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="label">Durée</div>
-                            <div class="value">15 j</div>
+                            <div class="value">
+                                <?php echo $regime["regime"]["duree"] ?>
+                                j
+                            </div>
                         </div>
                         <div class="row">
                             <div class="label">Prix totale à payer </div>
-                            <div class="value">10000 AR</div>
+                            <div class="value">
+                                <?php echo $regime["data"]["prix"] ?> AR
+                            </div>
                         </div>
                     </div>
                     <div class="section_payement">
-                        <div class="btn">
-                            <button>Valider</button>
-                        </div>
+                        <form method="post" action="<?php echo base_url(); ?>index.php/InsertController/facturation">
+                            <input type="hidden" name="id_regime" value="<?php echo $regime["regime"]["id_regime"] ?>">
+                            <input type="hidden" name="id_sport" value="<?php echo $sport["id_sport"]; ?>">
+                            <div class="btn">
+                                <button>Valider</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
