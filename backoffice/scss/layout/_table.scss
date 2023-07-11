@@ -1,0 +1,70 @@
+.table {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: var(--font);
+
+  &__container {
+    width: 100%;
+    overflow-x: auto;
+    height: 480px;
+
+    table {
+      tr {
+        display: flex;
+        gap: 2px;
+      }
+
+      thead td {
+        background: var(--color);
+        color: white;
+        padding-block: 15px;
+      }
+
+      td {
+        padding: 0 15px;
+        font-size: 16px;
+        padding-block: 8px;
+      }
+
+      tbody {
+        transition: 200ms;
+      }
+
+      tbody.hidden {
+        opacity: 0;
+      }
+
+      tbody tr {
+        display: none;
+      }
+
+      tbody tr.active {
+        display: block;
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 25px;
+
+    &__value {
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px groove;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-color: rgba(0, 0, 0, 0.267);
+
+      &.active {
+        border-color: var(--border-color);
+        color: var(--color);
+      }
+    }
+  }
+}

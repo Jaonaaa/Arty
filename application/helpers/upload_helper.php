@@ -1,4 +1,5 @@
 <?php
+
 function upload_file($userfile) {
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $uploadDirectory = 'uploads/';

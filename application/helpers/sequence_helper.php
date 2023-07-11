@@ -1,5 +1,6 @@
 <?php
 
+
 function nextval($sequence)
 {
   $CI =& get_instance();
@@ -12,4 +13,6 @@ function nextval($sequence)
     return $row->valeur;
   }
   return null;
+
 }
+
