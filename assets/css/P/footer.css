@@ -26,6 +26,22 @@
 .logo_section {
   margin-bottom: 1.8rem;
   transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  widows: 100%;
+}
+.logo_section .left {
+  width: 2rem;
+  margin-right: 1rem;
+}
+.logo_section .left img {
+  width: 100%;
+}
+.logo_section .right {
+  width: 5rem;
+}
+.logo_section .right img {
+  width: 100%;
 }
 .logo_section svg {
   transition: all 0.2s ease-in-out;

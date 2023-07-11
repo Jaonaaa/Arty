@@ -118,7 +118,31 @@
   font-size: 1.1rem;
   margin: 0 1rem;
   display: flex;
+  position: relative;
   align-items: flex-end;
+}
+#header .user_param .block_user .username .IMC_block {
+  position: absolute;
+  bottom: -300%;
+  left: 0;
+  width: auto;
+  padding: 1rem 1rem;
+  transform: translateX(-60%);
+  display: flex;
+  background: white;
+  z-index: 2;
+  text-align: center;
+  font-weight: normal;
+  align-items: flex-end;
+  white-space: nowrap;
+  box-shadow: 0 0 0.1rem 0.1rem rgba(77, 77, 77, 0.382);
+}
+#header .user_param .block_user .username .IMC_block .text {
+  margin-right: 0.6rem;
+}
+#header .user_param .block_user .username .IMC_block .value {
+  font-size: 1.4rem;
+  color: var(--primary);
 }
 #header .user_param .block_user .user_pic {
   width: 2rem;
@@ -221,6 +245,7 @@
   position: relative;
   flex-direction: column;
   opacity: 0;
+  padding-bottom: 5rem;
   transition: all 0.3s ease-in-out;
   transform: translateY(30%);
   justify-content: center;
@@ -265,10 +290,11 @@
   position: relative;
 }
 #center_container .choice_blocks .choice .img {
-  width: 20rem;
+  width: 14rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  height: 20rem;
+  height: 14rem;
+  padding: 1rem;
   transition: all 0.2s ease-in-out;
   display: flex;
   justify-content: center;
@@ -280,6 +306,14 @@
 }
 #center_container .choice_blocks .choice .img img {
   width: 100%;
+  height: 100%;
+}
+#center_container .choice_blocks .choice .verticale img {
+  width: 60%;
+  height: 100%;
+}
+#center_container .choice_blocks .choice .verticale .verticale {
+  width: 50%;
   height: 100%;
 }
 #center_container .choice_blocks .choice .label {
@@ -345,6 +379,17 @@ table th {
   height: 2.8rem;
   padding: 0 4rem 0 1rem;
 }
+table .end {
+  text-align: end;
+}
+table td {
+  text-align: center;
+}
+table td a {
+  color: var(--primary);
+  font-weight: bolder;
+  text-decoration: underline;
+}
 
 .suggestions_container {
   display: flex;
@@ -402,4 +447,20 @@ table th {
 .suggestions_container .suggestion_block .right img {
   width: 100%;
   height: 100%;
+}
+
+.porte_monnaie {
+  display: flex;
+  margin: 0 0.3rem 0 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 1.3rem;
+  color: var(--secondary);
+}
+.porte_monnaie .monnaie {
+  align-self: flex-end;
+  margin-right: 0.3rem;
+}
+.porte_monnaie .monnaie_icon {
+  align-self: flex-end;
 }/*# sourceMappingURL=Home.css.map */

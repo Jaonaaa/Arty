@@ -13,6 +13,7 @@ class Login_Front extends CI_Model
     public function insert_user($name, $email, $pwd, $dtn)
     {
         $this->load->model("MyException");
+        $this->load->model("Porte_monnaie_P");
         $connection = $this->db;
         if (!$this->checkAgeMin($dtn))
             return json_encode(array("status" => "error", "details" => "Vous devez avoir au moins 5 ans"));
@@ -26,6 +27,8 @@ class Login_Front extends CI_Model
                 $connection->escape($pwd), $connection->escape($dtn), $connection->escape(0)
             );
             $connection->query($query);
+            //
+            $this->Porte_monnaie_P->insert_monnaie($connection, 0, $iduser);
             //
             $error = $this->MyException->errorDB($connection);
             if ($error) {
@@ -76,6 +79,8 @@ class Login_Front extends CI_Model
     public function check_sign_in($email, $pwd)
     {
         $this->load->model("Utilisateur");
+        $this->load->model("Porte_monnaie_P");
+
         $connection = $this->db;
         $query = "SELECT  * FROM utilisateur where email = %s AND mot_de_passe = %s";
         $query = sprintf($query, $connection->escape($email), $connection->escape($pwd));
@@ -85,8 +90,11 @@ class Login_Front extends CI_Model
             return false;
         }
         if ($row != null) {
+            ///
             $data_user = $this->Utilisateur->getDetails_User($connection, $row["id_utilisateur"]);
             $row["data_user"] = $data_user;
+            $row['monnaie'] = $this->Porte_monnaie_P->get_monnaie($connection, $row["id_utilisateur"]);
+            ///
             return $row;
         } else {
             return false;

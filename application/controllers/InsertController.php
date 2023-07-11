@@ -20,6 +20,12 @@ class InsertController extends CI_Controller
         echo $result;
     }
 
+    public function facturation()
+    {
+        $this->load->model("Facturation");
+        $result = $this->Facturation->validate_facturation(0, 1);
+        echo $result;
+    }
     public function isConnected()
     {
         if (!$this->session->has_userdata('user')) {

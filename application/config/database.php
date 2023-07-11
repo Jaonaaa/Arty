@@ -76,9 +76,13 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn' => '',
 	'hostname' => 'localhost',
+	//sql213.infinityfree.com
 	'username' => 'root',
+	//if0_34583440
 	'password' => 'root',
+	//RywGInn7znTGbm
 	'database' => 'regime',
+	//if0_34583440_regime
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
