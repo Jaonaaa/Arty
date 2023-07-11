@@ -66,7 +66,7 @@ function register_user_data(idGenre, taille, poids) {
           createSidePopUp(retour.details, "error");
         } else {
           console.log(retour);
-          //window.location = `${base_url}HomeController`;
+          window.location = `${base_url}HomeController`;
         }
       } else {
         console.log(xhr.status);

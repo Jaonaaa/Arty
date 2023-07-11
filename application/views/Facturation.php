@@ -8,7 +8,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arty</title>
+    <title>Facturation</title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/icon/Arty_logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/PopUp.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/P/index.css">
@@ -48,7 +48,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="container_home">
             <?php
             if ($users["data_user"] != null) {
-                include("Home_content.php");
+                ?>
+                Facturation
+                <?php
             } else {
                 include("Form_data_user.php");
             }

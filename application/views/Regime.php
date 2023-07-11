@@ -47,9 +47,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="header_blanking"></div>
         <div class="container_home">
             <?php
-            if ($users["data_user"] != null) {
-                include("Home_content.php");
-            } else {
+            if ($users["data_user"] != null) { ?>
+                <div class="title_section">Liste de mes régimes</div>
+                <div class="table_container">
+                    <table id="table_regime">
+                        <tr>
+                            <th>Nom</th>
+                            <th>date</th>
+                        </tr>
+                        <tr>
+                            <td>Extra fin</td>
+                            <td>2023/01/12</td>
+                        </tr>
+                    </table>
+                </div>
+
+            <?php } else {
                 include("Form_data_user.php");
             }
             ?>

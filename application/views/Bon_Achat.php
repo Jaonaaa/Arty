@@ -48,7 +48,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="container_home">
             <?php
             if ($users["data_user"] != null) {
-                include("Home_content.php");
+                ?>
+                <div class="title_section">Liste Bon d'achat</div>
+                <div class="table_container">
+                    <table id="table_regime">
+                        <tr>
+                            <th>Code</th>
+                            <th>Valeur</th>
+                        </tr>
+                        <tr>
+                            <td>EDEX#S</td>
+                            <td>15000 Ar</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <?php
             } else {
                 include("Form_data_user.php");
             }
