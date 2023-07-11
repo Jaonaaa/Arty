@@ -1,5 +1,10 @@
 import { ajax, base_url } from "../js/ajax.js";
-import { LineData, LineGraph } from "../js/graphic.js";
+import {
+  DoughnutData,
+  DoughnutGraphic,
+  LineData,
+  LineGraph,
+} from "../js/graphic.js";
 import { Meal } from "../models/meal.js";
 import { add } from "./meal.js";
 import { renderRegime } from "./regime.js";
@@ -21,6 +26,32 @@ function dailyGraph(price_graphes) {
 
 /**
  *
+ * @param {*} nutriment
+ * @return {void}
+ */
+function nutrimentGraph(nutriment) {
+  let canvas = document.querySelector(".regime__doghnut__graph canvas");
+  let donut = new DoughnutGraphic(
+    ["Legume", "Viande", "Volaille", "Poisson"],
+    [
+      new DoughnutData(
+        [
+          nutriment.legume,
+          nutriment.viande,
+          nutriment.volaille,
+          nutriment.poisson,
+        ],
+        "",
+        ["#badc58", "#eb4d4b", "#ffbe76", "#535c68"],
+        0
+      ),
+    ]
+  );
+  donut.drawGraph(canvas);
+}
+
+/**
+ *
  * @return {void}
  */
 function back() {
@@ -34,7 +65,7 @@ function back() {
  * @param {Meal[]} meals
  * @return {void}
  */
-function update(price_graphes, meals) {
+function update(price_graphes, meals, nutriments) {
   let root = document.getElementById("root");
   root.classList.add("invisible");
 
@@ -45,11 +76,16 @@ function update(price_graphes, meals) {
       <div class="regime__line__graph">
         <canvas></canvas>
       </div>
+      <h1 class="title">Proportions des nutriments</h1>
+      <div class="regime__doghnut__graph">
+        <canvas></canvas>
+      </div>
       <h1 class="title">Liste des plats dans le regime</h1>
       <div class="meal__container"></div>
     `;
 
     dailyGraph(price_graphes);
+    nutrimentGraph(nutriments);
     add(meals);
     back();
 
@@ -71,5 +107,11 @@ export async function renderRegimeGraph(id_regime) {
   let meals = await ajax(`${base_url}regime/find_meals?regime=${id_regime}`);
   meals = JSON.parse(meals);
 
-  update(price_graphes, meals);
+  let nutriments = await ajax(
+    `${base_url}regime/find_nutriment?regime=${id_regime}`
+  );
+  nutriments = JSON.parse(nutriments);
+  nutriments = nutriments[0];
+
+  update(price_graphes, meals, nutriments);
 }

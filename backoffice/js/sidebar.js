@@ -1,3 +1,4 @@
+import { renderDashboard } from "../pages/dashboard.js";
 import { renderMeal } from "../pages/meal.js";
 import { renderMealCategory } from "../pages/meal_category.js";
 import { renderRechargeCode } from "../pages/recharge_code.js";
@@ -18,6 +19,13 @@ function resetSidebarItems() {
     item.classList.remove("active");
   });
 }
+
+let dashboard = document.getElementById("dashboard__item");
+dashboard.addEventListener("click", () => {
+  resetSidebarItems();
+  dashboard.classList.add("active");
+  renderDashboard();
+});
 
 let sport = document.getElementById("sport__item");
 sport.addEventListener("click", () => {
@@ -107,3 +115,5 @@ function toggleSidebar() {
 }
 
 sidebarToggler.addEventListener("click", toggleSidebar);
+
+renderDashboard();
