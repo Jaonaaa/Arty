@@ -1,3 +1,4 @@
+import { createSidePopUp } from "../../assets/js/P/PopUp.js";
 import { ajax, base_url } from "../js/ajax.js";
 import { Meal } from "../models/meal.js";
 import { renderRegime } from "../pages/regime.js";
@@ -68,8 +69,12 @@ function initBigForm() {
     event.preventDefault();
     let nom = document.getElementById("nom").value;
     let duree = document.getElementById("duree").value;
+    let legume = document.getElementById("legume").value;
+    let viande = document.getElementById("viande").value;
+    let volaille = document.getElementById("volaille").value;
+    let poisson = document.getElementById("poisson").value;
 
-    updateAfterSendData(nom, duree);
+    updateAfterSendData(nom, duree, legume, viande, volaille, poisson);
   });
 }
 
@@ -78,7 +83,7 @@ function initBigForm() {
  * @param {string} nom
  * @param {number} duree
  */
-function updateAfterSendData(nom, duree) {
+function updateAfterSendData(nom, duree, legume, viande, volaille, poisson) {
   let root = document.getElementById("root");
   root.classList.add("invisible");
 
@@ -93,6 +98,10 @@ function updateAfterSendData(nom, duree) {
       <h1 class="form__title">${nom} pour une duree de ${duree} jours</h1>
       <input type="hidden" name="nom" value="${nom}" />
       <input type="hidden" name="duree" value="${duree}" />
+      <input type="hidden" name="legume" value="${legume}" />
+      <input type="hidden" name="viande" value="${viande}" />
+      <input type="hidden" name="volaille" value="${volaille}" />
+      <input type="hidden" name="poisson" value="${poisson}" />
       <div class="meal__container"></div>
       <input type="submit" class="btn confirm" value="Valider" />
     `;
@@ -116,11 +125,14 @@ function updateAfterSendData(nom, duree) {
       let response = await ajax(`${base_url}regime/insert`, "POST", data);
       if (response == 1) {
         renderRegime();
+      } else {
+        createSidePopUp(response, "error");
       }
     });
 
+    root.querySelector(".back").addEventListener("click", update);
+
     root.classList.remove("invisible");
-    back();
   }, 300);
 }
 
@@ -153,6 +165,22 @@ function update() {
         <div class="input__container">
           <label for="duree">Duree (en jours)</label>
           <input type="number" id="duree" name="duree" autocomplete="off" required />
+        </div>
+        <div class="input__container">
+          <label for="legume">Legume</label>
+          <input type="number" id="legume" name="legume" autocomplete="off" required />
+        </div>
+        <div class="input__container">
+          <label for="viande">Viande</label>
+          <input type="number" id="viande" name="viande" autocomplete="off" required />
+        </div>
+        <div class="input__container">
+          <label for="volaille">Volaille</label>
+          <input type="number" id="volaille" name="volaille" autocomplete="off" required />
+        </div>
+        <div class="input__container">
+          <label for="poisson">Poisson</label>
+          <input type="number" id="poisson" name="poisson" autocomplete="off" required />
         </div>
         <input type="submit" class="btn confirm" value="Valider" />
       </form>

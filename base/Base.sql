@@ -112,3 +112,11 @@ create table requete_code (
     id_utilisateur varchar(30) references utilisateur(id_utilisateur),
     id_code_recharge varchar(30) references code_recharge(id_code_recharge)
 );
+
+create table nutriment_regime (
+    id_regime varchar(30) not null references regime(id_regime),
+    legume int not null,
+    viande int not null,
+    volaille int not null,
+    poisson int not null
+);
