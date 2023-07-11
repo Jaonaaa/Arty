@@ -1,0 +1,24 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 20px 20px;
+  background: white;
+  z-index: 999;
+
+  &__logo {
+    height: 30px;
+  }
+
+  &__toggle {
+    cursor: pointer;
+    height: 15px;
+    transition: 300ms;
+    margin-top: 5px;
+  }
+
+  &__toggle.active {
+    transform: rotate(180deg);
+  }
+}

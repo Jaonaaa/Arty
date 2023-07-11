@@ -1,0 +1,47 @@
+.sidebar {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  background: white;
+  width: 300px;
+  height: calc(100vh - 100px);
+  z-index: 999;
+
+  &__item {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-family: var(--font);
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 2px;
+      left: 0;
+      height: calc(100% - 4px);
+      width: 4px;
+      background: var(--color);
+      opacity: 0;
+      transition: 200ms;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    &:hover::before,
+    &.active::before {
+      opacity: 1;
+    }
+  }
+
+  &__item__icon {
+    height: 25px;
+  }
+
+  &__item__name {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,14 @@
+:root {
+  --font: Open sans;
+  --dancing: Dancing;
+}
+
+@font-face {
+  font-family: Open sans;
+  src: url(../font/OpenSans-Light.ttf);
+}
+
+@font-face {
+  font-family: Dancing;
+  src: url(../font/DancingScript-Regular.ttf);
+}
