@@ -7,7 +7,7 @@ import { Meal } from "../models/meal.js";
  * @param {Meal} meal
  * @return {HTMLDivElement}
  */
-function createMealCard(meal) {
+export function createMealCard(meal) {
   let response = document.createElement("div");
   response.classList.add("meal__card");
 
@@ -27,7 +27,7 @@ function createMealCard(meal) {
  *
  * @param {Meal[]} meals
  */
-function add(meals) {
+export function add(meals) {
   let container = document.querySelector(".meal__container");
   meals.forEach((meal) => {
     container.appendChild(createMealCard(meal));
