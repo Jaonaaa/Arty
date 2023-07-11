@@ -38,4 +38,18 @@
   .meal__text {
     font-size: 14px;
   }
+
+  .meal__day {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    .title {
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: -20px;
+      color: var(--color);
+    }
+  }
 }

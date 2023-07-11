@@ -1,6 +1,7 @@
 import { renderMeal } from "../pages/meal.js";
 import { renderMealCategory } from "../pages/meal_category.js";
 import { renderRechargeCode } from "../pages/recharge_code.js";
+import { renderRegime } from "../pages/regime.js";
 import { renderSport } from "../pages/sport.js";
 
 const sidebarToggler = document.querySelector(".navbar__toggle");
@@ -47,6 +48,13 @@ repas.addEventListener("click", () => {
   resetSidebarItems();
   repas.classList.add("active");
   renderMeal();
+});
+
+let regime = document.getElementById("regime__item");
+regime.addEventListener("click", () => {
+  resetSidebarItems();
+  regime.classList.add("active");
+  renderRegime();
 });
 
 /**

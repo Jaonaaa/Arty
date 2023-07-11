@@ -7,6 +7,21 @@ class Meal_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function breakfast() {
+    $query = $this->db->get_where("repas", array("id_type_repas" => "typerepas000001"));
+    return $query->result_array();
+  }
+
+  public function lunch() {
+    $query = $this->db->get_where("repas", array("id_type_repas" => "typerepas000002"));
+    return $query->result_array();
+  }
+
+  public function diner() {
+    $query = $this->db->get_where("repas", array("id_type_repas" => "typerepas000003"));
+    return $query->result_array();
+  }
+
   public function setNom($nom) {
     $nom = trim($nom);
   }
