@@ -53,7 +53,7 @@ async function swapContent(index, to_do) {
   } else if (index == 4) {
     removeContent();
     await getSuggestions(getAllDataForSuggestion()).then((data) => {
-      main.innerHTML = suggestionsContent(null);
+      main.innerHTML = suggestionsContent(data);
       setUpBackArrow(index - 1);
       setUpSuggestions();
       /////
@@ -123,12 +123,11 @@ function setUpDuration() {
 
 function setUpSuggestions() {
   let suggestions = document.querySelectorAll(".suggestion_block");
-  suggestions.forEach((suggestions) => {
-    // get id regime
-    //
-    suggestions.addEventListener("click", () => {
-      // add bla bla
-      window.location = `${base_url}HomeController/Facturation`;
+  suggestions.forEach((suggestion) => {
+    let id_regime = suggestion.getAttribute("id_regime");
+    let id_sport = suggestion.getAttribute("id_sport");
+    suggestion.addEventListener("click", () => {
+      window.location = `${base_url}HomeController/Facturation/${id_regime}/${id_sport}`;
     });
   });
 }
@@ -275,45 +274,56 @@ function thirdContent(data) {
 function suggestionsContent(data) {
   let content = `
   <div id="center_container">
-    <div class="title_section">
-        Vos suggestions de régime
-    </div>
-    <div id="arrow_back">
-    <img src="${base_url}assets/img/arrow_back.png" alt="">
+  <div class="title_section">
+      Vos suggestions de régime
+  </div>
+  <div id="arrow_back">
+  <img src="${base_url}assets/img/arrow_back.png" alt="">
 </div>
-    <div class="suggestions_container">
-
-        <div class="suggestion_block">
-            <div class="left">
-                <div class="row_about">
-                    <div class="label">Nom</div>
-                    <div class="value">Régime maxi</div>
-                </div>
-                <div class="row_about">
-                    <div class="label">Apport Calorique / j</div>
-                    <div class="value">1200 KCal</div>
-                </div>
-                <div class="row_about">
-                    <div class="label">Durée</div>
-                    <div class="value">16 j</div>
-                </div>
-                <div class="row_about">
-                    <div class="label">Perte de poids</div>
-                    <div class="value">12 kg</div>
-                </div>
-                <div class="row_about">
-                    <div class="label">Prix</div>
-                    <div class="value">12000 Ar</div>
-                </div>
-            </div>
-            <div class="right">
-                <img src="${base_url}assets/img/sign_in_1.webp" alt="">
-            </div>
-        </div>
-
-    </div>
-</div>
-      `;
+  <div class="suggestions_container"> `;
+  if (data.length == 0) {
+    content += "Aucune suggestion";
+  }
+  data.forEach((da) => {
+    let regime = da.regime;
+    let sport = da.sport;
+    let block = `
+          <div class="suggestion_block" id_regime="${regime.regime.id_regime}" id_sport="${sport.id_sport}">
+              <div class="left">
+                  <div class="row_about">
+                      <div class="label">Régime</div>
+                      <div class="value">${regime.regime.nom}</div>
+                  </div>
+                  <div class="row_about">
+                      <div class="label">Sport</div>
+                      <div class="value">${sport.nom}</div>
+                  </div>
+                  <div class="row_about">
+                      <div class="label">Durée</div>
+                      <div class="value">${regime.regime.duree} j</div>
+                  </div>
+                  <div class="row_about">
+                      <div class="label">Changement de poids</div>
+                      <div class="value">${da.poidsTotalConsommer} kg</div>
+                  </div>
+                  <div class="row_about">
+                      <div class="label">Prix</div>
+                      <div class="value">${da.regime.prix} Ar</div>
+                  </div>
+              </div>
+              <div class="right">
+                  <img src="${base_url}assets/img/sign_in_1.webp" alt="">
+              </div>
+          </div>
+  
+     
+        `;
+    content += block;
+  });
+  content += `
+  </div>
+  </div>
+  `;
   return content;
 }
 

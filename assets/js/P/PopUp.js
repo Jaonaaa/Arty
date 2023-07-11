@@ -80,6 +80,6 @@ export function removeMiddlePopUp() {
   }
 }
 
-if (bon_achat) {
+if (bon_achat != undefined) {
   createSidePopUp("Demande envoyé", "good");
 }

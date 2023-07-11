@@ -34,7 +34,7 @@ class Porte_monnaie_P extends CI_Model
 
     public function update_porte_monnaie($connection, $id_utilisateur, $new_argent)
     {
-        $query = "UPDATE argent set argent = %s WHERE id_utilisateur = %s";
+        $query = "UPDATE argent set valeur = %s WHERE id_utilisateur = %s";
         $query = sprintf(
             $query, $connection->escape($id_utilisateur), $connection->escape($new_argent), $connection->escape($id_utilisateur)
         );

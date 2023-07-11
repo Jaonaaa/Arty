@@ -23,8 +23,16 @@ class InsertController extends CI_Controller
     public function facturation()
     {
         $this->load->model("Facturation");
-        $result = $this->Facturation->validate_facturation(0, 1);
-        echo $result;
+        $id_sport = $_POST["id_sport"];
+        $id_regime = $_POST["id_regime"];
+
+        $result = $this->Facturation->validate_facturation($id_regime, $id_sport);
+        if ($result == false) {
+            redirect("" . base_url() . "HomeController/Facturation/" . $id_regime . "/" . $id_sport . "?prix_insuffissant");
+        } else {
+            redirect("" . base_url() . "HomeController/regime");
+
+        }
     }
     public function isConnected()
     {

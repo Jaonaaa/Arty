@@ -21,12 +21,19 @@ class HomeController extends CI_Controller
 
     public function regime()
     {
+        $this->load->model("Regime_P");
+        $connection = $this->db;
+        $data["regimes"] = $this->Regime_P->getUserRegimes($connection);
         $data["users"] = $this->session->userdata('user');
         $data['ind'] = "regime";
         $this->load->view('Regime', $data);
     }
-    public function Facturation()
+    public function Facturation($id_regime, $id_sport)
     {
+        $this->load->model("Regime_P");
+        $connection = $this->db;
+        $data["regime"] = $this->Regime_P->getRegime($connection, $id_regime);
+        $data["sport"] = $this->Regime_P->getSport($connection, $id_sport);
         $data["users"] = $this->session->userdata('user');
         $data['ind'] = "facturation";
         $this->load->view('Facturation', $data);
@@ -59,29 +66,6 @@ class HomeController extends CI_Controller
     }
 
 
-    // public function getCalorie($plat)
-    // {
-    //     $calorie = $plat->calorie;
-    //     $decalage = $calorie - 500;
-    //     return $decalage;
-    // }
-    // public function getCalorieRegime($regime)
-    // {
-    //     $plats = $regime->getAllPlats();
-    //     $totalCalorie = 0;
-    //     foreach ($plats as  $plat) {
-    //         $totalCalorie += $this->getCalorie($plat):
-    //     }
-    //     $kg = $totalCalorie/500;
-    // }
-    // public function correspondateRegime($all_regime)
-    // {
-    //     $regime_mety = [];
-    //     foreach ($all_regime as $regime) {
-    //        array_push($all_regime,array("poids"=>$this->getCalorieRegime($regime),"regime"=>$regime));
-    //     }
-    // }
-
 
     public function bon_achat()
     {
@@ -100,14 +84,17 @@ class HomeController extends CI_Controller
         redirect("" . base_url() . "HomeController/bon_achat?setted");
     }
 
+
     public function get_suggestions()
     {
+        $this->load->model("Regime_P");
         $to_do = $_POST["type"];
         $duration = $_POST["duration"];
         $poids = $_POST["poids"];
-        echo json_encode(array("status" => "Il veut " . $to_do . " " . $poids . " kg pendant " . $duration . " jour"));
+        // echo json_encode(array("status" => "Il veut " . $to_do . " " . $poids . " kg pendant " . $duration . " jour"));
+        $result = $this->Regime_P->getStatRegime($duration, $poids, $to_do);
+        echo json_encode($result);
     }
-
     public function log_out()
     {
         $this->session->sess_destroy();
