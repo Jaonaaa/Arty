@@ -98,7 +98,6 @@ class Produit extends CI_Model
     }
 
 
-
     public function toAbs($number)
     {
         if ($number < 0) {

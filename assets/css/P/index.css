@@ -1,6 +1,8 @@
 :root {
-  --primary: rgb(100, 109, 234);
-  --primary-hovered: rgb(60, 68, 186);
+  --primary: #be0349;
+  --primary-hovered: #8e093a;
+  --secondary: #26a3ff;
+  --secondary-hovered: #1c88d4;
 }
 
 body {
@@ -18,4 +20,20 @@ body {
 
 spining-dots {
   color: var(--primary);
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(234, 233, 233);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 1rem;
 }/*# sourceMappingURL=index.css.map */

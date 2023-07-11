@@ -12,8 +12,31 @@ class HomeController extends CI_Controller
 
     public function index()
     {
-        $this->load->view('Home');
+        $data["users"] = $this->session->userdata('user');
+        $data['ind'] = "Home";
+        $this->load->view('Home', $data);
     }
+
+    public function regime()
+    {
+        $data["users"] = $this->session->userdata('user');
+        $data['ind'] = "regime";
+        $this->load->view('Regime', $data);
+    }
+    public function Facturation()
+    {
+        $data["users"] = $this->session->userdata('user');
+        $data['ind'] = "facturation";
+        $this->load->view('Facturation', $data);
+    }
+
+    public function bon_achat()
+    {
+        $data["users"] = $this->session->userdata('user');
+        $data['ind'] = "bon_achat";
+        $this->load->view('Bon_Achat', $data);
+    }
+
 
     public function log_out()
     {

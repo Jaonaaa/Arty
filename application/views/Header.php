@@ -12,16 +12,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </div>
     <div class="params">
         <div class="links">
-            <div class="link_block link_selected">Home</div>
-            <div class="link_block">Something</div>
-            <div class="link_block">Store</div>
-            <div class="link_block">About us</div>
+            <div class="link_block"><a class="<?php echo $ind == "Home" ? "link_selected" : "" ?>"
+                    href="<?php echo base_url(); ?>HomeController/index">Home</a></div>
+            <div class="link_block"><a class="<?php echo $ind == "regime" ? "link_selected" : "" ?>"
+                    href="<?php echo base_url(); ?>HomeController/Regime">Regimes</a></div>
+            <div class="link_block"><a class="<?php echo $ind == "bon_achat" ? "link_selected" : "" ?>"
+                    href="<?php echo base_url(); ?>HomeController/bon_achat">Bon d'achat </a> </div>
+            <div class="link_block"><a href="<?php echo base_url(); ?>HomeController/log_out">Deconnexion</a></div>
         </div>
         <div class="user_param">
             <div class="block_user">
-                <div class="user_pic">
+                <div class="username">
+                    <?php echo $users["nom"] ?>
                 </div>
-                <div class="username">Peter</div>
             </div>
         </div>
     </div>
