@@ -97,6 +97,7 @@ create table utilisateur_regime(
     id_utilisateur_regime varchar(30) primary key,
     id_regime varchar(30) not null,
     debut date not null,
+    id_sport varchar(30) references sport(id_sport)
     foreign key (id_regime) references regime(id_regime)
 );
 
