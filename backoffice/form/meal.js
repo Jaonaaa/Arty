@@ -1,3 +1,4 @@
+import { createSidePopUp } from "../../assets/js/P/PopUp.js";
 import { ajax, base_url } from "../js/ajax.js";
 import { Meal_category } from "../models/meal_category.js";
 import { renderMeal } from "../pages/meal.js";
@@ -39,6 +40,8 @@ function sendForm() {
     let response = await ajax(`${base_url}meal/insert`, "POST", data);
     if (response == 1) {
       renderMeal();
+    } else {
+      createSidePopUp(response, "error");
     }
   });
 }

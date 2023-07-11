@@ -1,3 +1,4 @@
+import { createSidePopUp } from "../../assets/js/P/PopUp.js";
 import { ajax, base_url } from "../js/ajax.js";
 import { renderRechargeCode } from "../pages/recharge_code.js";
 
@@ -16,6 +17,8 @@ function sendForm() {
     );
     if (response == 1) {
       renderRechargeCode();
+    } else {
+      createSidePopUp(response, any);
     }
   });
 }

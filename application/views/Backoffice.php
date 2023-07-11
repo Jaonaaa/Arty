@@ -6,6 +6,7 @@
     <title>Back-Office</title>
     <link rel="stylesheet" href="<?php echo base_url("backoffice/css/font.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("backoffice/css/style.css"); ?>" />
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/PopUp.css"); ?>" />
     <script src="<?php echo base_url("backoffice/lib/anime.min.js") ?>"></script>
     <script src="<?php echo base_url("backoffice/lib/chart.js"); ?>"></script>
     <script type="module" src="<?php echo base_url("backoffice/js/sidebar.js"); ?>" defer></script>
@@ -48,5 +49,8 @@
     <div id="root"></div>
     <script type="module" src="<?php echo base_url("backoffice/js/graphic.js"); ?>" defer></script>
     <script type="module" src="<?php echo base_url("backoffice/js/ajax.js"); ?>" defer></script>
+    <script>
+      var bon_achat = undefined;
+    </script>
   </body>
 </html>

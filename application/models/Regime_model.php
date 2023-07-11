@@ -27,9 +27,26 @@ class Regime_model extends CI_Model
     return $result->result_array();
   }
 
+
+  public function price_regime() {
+    $query = "
+      SELECT
+        regime.id_regime,
+        regime.nom,
+        SUM(prix) AS prix
+      FROM
+        regime_repas
+        JOIN repas ON regime_repas.id_repas = repas.id_repas
+        JOIN regime ON regime_repas.id_regime = regime.id_regime
+        GROUP BY regime.id_regime, regime.nom
+    ";
+    $result = $this->db->query($query);
+    return $result->result_array();
+  }
+
+
   public function find_meals($id_regime)
   {
-
     $query = "
       SELECT
         DISTINCT(repas.id_repas),
@@ -46,8 +63,21 @@ class Regime_model extends CI_Model
     return $result->result_array();
   }
 
-  public function insert($nom, $duree, $breakfast, $lunch, $diner)
-  {
+
+  public function find_nutriment($id_regime) {
+    $query = $this->db->get_where("nutriment_regime", array("id_regime" => $id_regime));
+    return $query->result_array();
+  }
+
+  public function setNutriment($legume, $viande, $volaille, $poisson) {
+    if ($legume + $viande + $volaille + $poisson != 100) {
+      throw new Exception("La somme des nutriments doit etre 100");
+    }
+  }
+
+  public function insert($nom, $duree, $breakfast, $lunch, $diner, $legume, $viande, $volaille, $poisson) {
+    $this->setNutriment($legume, $viande, $volaille, $poisson);
+
     $newId = nextval("sequence_regime");
     $newId = nextId("regime", $newId);
     $data = array(
@@ -57,7 +87,17 @@ class Regime_model extends CI_Model
     );
     $this->db->insert("regime", $data);
 
-    for ($i = 0; $i < count($breakfast); $i++) {
+
+    $nutriment = array(
+      "id_regime" => $newId,
+      "legume" => $legume,
+      "viande" => $viande,
+      "volaille" => $volaille,
+      "poisson" => $poisson
+    );
+    $this->db->insert("nutriment_regime", $nutriment);
+
+    for ($i=0; $i < count($breakfast); $i++) { 
       $bfID = nextval("sequence_regime_repas");
       $bfID = nextId("regimerepas", $bfID);
       $bf = array(
