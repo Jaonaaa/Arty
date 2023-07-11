@@ -53,12 +53,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <table id="table_regime">
                         <tr>
                             <th>Nom</th>
+                            <th>Prix</th>
                             <th>date</th>
-                        </tr>
-                        <tr>
-                            <td>Extra fin</td>
-                            <td>2023/01/12</td>
-                        </tr>
+                        </tr <?php foreach ($regimes as $regime) { ?>>
+                            <tr>
+                                <td>
+                                    <?php echo $regime["details"]['regime']["nom"]; ?>
+                                </td>
+                                <td>
+                                    <?php echo $regime["details"]['data']["prix"]; ?> Ar
+                                </td>
+                                <td>
+                                    <?php echo $regime["debut"]; ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </table>
                 </div>
 

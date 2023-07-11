@@ -65,7 +65,9 @@ function back() {
  * @param {Meal[]} meals
  * @return {void}
  */
+
 function update(price_graphes, meals, nutriments) {
+
   let root = document.getElementById("root");
   root.classList.add("invisible");
 
