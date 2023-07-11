@@ -117,7 +117,29 @@ $grey-text: rgb(88, 88, 88)
                 font-size: 1.1rem
                 margin: 0 1rem
                 display: flex
+                position: relative
                 align-items: flex-end
+                .IMC_block
+                    position: absolute
+                    bottom: -300%
+                    left: 0
+                    width: auto
+                    padding: 1rem 1rem
+                    transform: translateX(-60%)
+                    display: flex
+                    background: white
+                    z-index: 2
+                    text-align: center
+                    font-weight: normal
+                    align-items: flex-end
+                    white-space: nowrap
+                    box-shadow: 0 0 0.1rem 0.1rem rgba(77, 77, 77, 0.382)
+                    .text
+                        margin-right: 0.6rem
+                    .value
+                        font-size: 1.4rem
+                        color: var(--primary)
+
             .user_pic
                 width: 2rem
                 height: 2rem

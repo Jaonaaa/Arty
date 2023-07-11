@@ -6,11 +6,11 @@ export function setUpSwap() {
   //
   if (sign_up != undefined) {
     sign_up.addEventListener("click", () => {
-      showSwaper(`${base_url}assets/img/sign_up.jpg`, 0);
+      showSwaper(`${base_url}assets/img/sign_up.png`, 0);
     });
   } else {
     sign_in.addEventListener("click", () => {
-      showSwaper(`${base_url}assets/img/sign_in.jpg`, 1);
+      showSwaper(`${base_url}assets/img/sign_in.png`, 1);
     });
   }
 }

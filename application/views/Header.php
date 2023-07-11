@@ -24,6 +24,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div class="block_user">
                 <div class="username">
                     <?php echo $users["nom"] ?>
+                    <?php if ($users["data_user"] != null) { ?>
+                        <div class="IMC_block">
+                            <div class="text"> Votre IMC : </div>
+                            <div class="value">
+                                <?php
+                                $taille = $users["data_user"]["taille"] / 100;
+                                $imc = $users["data_user"]["poids"] / ($taille * $taille);
+                                echo (number_format($imc, 2)) ?>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
