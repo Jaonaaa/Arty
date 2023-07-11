@@ -11,6 +11,11 @@ create table utilisateur (
     est_admin int not null
 );
 
+create table argent (
+    id_utilisateur varchar(30) references utilisateur(id_utilisateur),
+    valeur double not null default 0
+);
+
 
 <-----------TABLE GENRE------------------->
 
@@ -42,6 +47,13 @@ create table type_repas(
     id_type_repas varchar(30) primary key,
     nom varchar(50) not null
 );
+
+insert into type_repas 
+(id_type_repas, nom) 
+values 
+('typerepas000001', 'Petit dejeuner'),
+('typerepas000002', 'Dejeuner'),
+('typerepas000003', 'DIner');
 
 <-----------TABLE REPAS------------------->
 create table repas(
@@ -93,4 +105,9 @@ create table sport(
     id_sport varchar(30) primary key,
     nom varchar(50) not null,
     poids_quotidien float not null
+);
+
+create table requete_code (
+    id_utilisateur varchar(30) references utilisateur(id_utilisateur),
+    id_code_recharge varchar(30) references code_recharge(id_code_recharge)
 );

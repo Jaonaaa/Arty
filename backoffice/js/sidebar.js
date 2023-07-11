@@ -17,9 +17,6 @@ function resetSidebarItems() {
   sidebarItems.forEach((item) => {
     item.classList.remove("active");
   });
-  sidebarToggler.classList.remove("active");
-  sidebar.classList.remove("active");
-  sidebarOut();
 }
 
 let sport = document.getElementById("sport__item");

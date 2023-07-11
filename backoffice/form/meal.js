@@ -47,6 +47,15 @@ function sendForm() {
  *
  * @return {void}
  */
+function back() {
+  let back = document.querySelector(".back");
+  back.addEventListener("click", renderMeal);
+}
+
+/**
+ *
+ * @return {void}
+ */
 async function update() {
   let root = document.getElementById("root");
   root.classList.add("invisible");
@@ -56,6 +65,7 @@ async function update() {
 
   window.setTimeout(() => {
     root.innerHTML = `
+      <img src="${base_url}assets/img/arrow_back.png" class="back" />
       <form class="form">
         <h1 class="form__title">Ajouter un nouveau plat</h1>
         <div class="input__container">
@@ -85,6 +95,7 @@ async function update() {
     `;
 
     renderOptions(data);
+    back();
     sendForm();
 
     root.classList.remove("invisible");

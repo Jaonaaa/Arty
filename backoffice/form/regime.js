@@ -1,5 +1,6 @@
 import { ajax, base_url } from "../js/ajax.js";
 import { Meal } from "../models/meal.js";
+import { renderRegime } from "../pages/regime.js";
 
 /**
  *
@@ -83,6 +84,7 @@ function updateAfterSendData(nom, duree) {
 
   window.setTimeout(async () => {
     root.innerHTML = `
+      <img src="${base_url}assets/img/arrow_back.png" class="back" />
       <form class="form"></form>
     `;
 
@@ -112,11 +114,23 @@ function updateAfterSendData(nom, duree) {
       event.preventDefault();
       let data = new FormData(form);
       let response = await ajax(`${base_url}regime/insert`, "POST", data);
-      console.log(response);
+      if (response == 1) {
+        renderRegime();
+      }
     });
 
     root.classList.remove("invisible");
+    back();
   }, 300);
+}
+
+/**
+ *
+ * @return {void}
+ */
+function back() {
+  let back = document.querySelector(".back");
+  back.addEventListener("click", renderRegime);
 }
 
 /**
@@ -129,6 +143,7 @@ function update() {
 
   window.setTimeout(() => {
     root.innerHTML = `
+      <img src="${base_url}assets/img/arrow_back.png" class="back" />
       <form class="form">
         <h1 class="form__title">Creer un regime</h1>
         <div class="input__container">
@@ -145,6 +160,7 @@ function update() {
 
     root.classList.remove("invisible");
     initBigForm();
+    back();
   }, 300);
 }
 

@@ -1,4 +1,4 @@
-class AreaData {
+export class AreaData {
   label;
   data;
   fill;
@@ -25,7 +25,7 @@ class AreaData {
   }
 }
 
-class AreaGraphic {
+export class AreaGraphic {
   labels;
   datasets;
 
@@ -59,7 +59,7 @@ class AreaGraphic {
   }
 }
 
-class BarData {
+export class BarData {
   label;
   data;
   backgroundColor;
@@ -83,7 +83,7 @@ class BarData {
   }
 }
 
-class BarGraph {
+export class BarGraph {
   labels;
   datasets;
 
@@ -117,7 +117,7 @@ class BarGraph {
   }
 }
 
-class Bubble {
+export class Bubble {
   x;
   y;
   r;
@@ -135,7 +135,7 @@ class Bubble {
   }
 }
 
-class BubbleData {
+export class BubbleData {
   label;
   data;
   backgroundColor;
@@ -153,7 +153,7 @@ class BubbleData {
   }
 }
 
-class BubbleGraph {
+export class BubbleGraph {
   datasets;
 
   /**
@@ -183,7 +183,7 @@ class BubbleGraph {
   }
 }
 
-class DoughnutData {
+export class DoughnutData {
   data;
   borderColor;
   backgroundColor;
@@ -204,7 +204,7 @@ class DoughnutData {
   }
 }
 
-class DoughnutGraphic {
+export class DoughnutGraphic {
   labels;
   datasets;
 
@@ -238,7 +238,7 @@ class DoughnutGraphic {
   }
 }
 
-class LineData {
+export class LineData {
   label;
   data;
   fill;
@@ -265,7 +265,7 @@ class LineData {
   }
 }
 
-class LineGraph {
+export class LineGraph {
   labels;
   datasets;
 
@@ -299,7 +299,7 @@ class LineGraph {
   }
 }
 
-class PolarAreaData {
+export class PolarAreaData {
   data;
   borderColor;
   backgroundColor;
@@ -320,7 +320,7 @@ class PolarAreaData {
   }
 }
 
-class PolarAreaGraph {
+export class PolarAreaGraph {
   labels;
   datasets;
 
@@ -354,7 +354,7 @@ class PolarAreaGraph {
   }
 }
 
-class RadarData {
+export class RadarData {
   label;
   backgroundColor;
   data;
@@ -372,7 +372,7 @@ class RadarData {
   }
 }
 
-class RadarGraph {
+export class RadarGraph {
   labels;
   datasets;
 

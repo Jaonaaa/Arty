@@ -12,10 +12,10 @@
   </head>
   <body>
     <nav class="navbar">
-      <img src="<?php echo base_url("backoffice/icon/logo.png"); ?>" alt="Logo du site web" class="navbar__logo" /><br>
+      <img src="<?php echo base_url("assets/img/Arty_text.png"); ?>" alt="Logo du site web" class="navbar__logo" /><br>
       <img src="<?php echo base_url("backoffice/icon/arrow.png"); ?>" alt="Alterner la sidebar" class="navbar__toggle">
     </nav>
-    <aside style="transform: translateX(-300px)" class="sidebar">
+    <aside style="transform: translateX(0)" class="sidebar">
       <div id="dashboard__item" class="sidebar__item active">
         <img src="<?php echo base_url("backoffice/icon/dashboard.png"); ?>" alt="" class="sidebar__item__icon" />
         <div class="sidebar__item__name">Dashboard</div>

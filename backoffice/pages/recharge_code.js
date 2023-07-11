@@ -5,6 +5,54 @@ import { Recharge_code } from "../models/recharge_code.js";
 
 /**
  *
+ * @param {*} code_confirm
+ * @returns {HTMLDivElement}
+ */
+function codeConfirmCard(code_confirm) {
+  let response = document.createElement("div");
+  response.classList.add("code__card");
+
+  response.innerHTML = `
+    <p class="text">
+      <span>${code_confirm.utilisateur}</span>
+      <span>${code_confirm.code}</span>
+      <span class="value">${code_confirm.prix} Ar</span>
+      <span class="confirm-link">Confirmer</span>
+    </p>
+  `;
+
+  let confirm = response.querySelector(".confirm-link");
+  confirm.addEventListener("click", async () => {
+    let result = await ajax(
+      `${base_url}recharge_code/confirm?id_utilisateur=${code_confirm.id_utilisateur}&id_code_recharge=${code_confirm.id_code_recharge}`,
+      "GET",
+      null
+    );
+    if (result == 1) {
+      renderRechargeCode();
+    }
+  });
+
+  return response;
+}
+
+/**
+ *
+ * @param {*[]} code_fonfirms
+ */
+function listQueryCode(code_fonfirms) {
+  let container = document.querySelector(".list__code");
+  if (code_fonfirms.length == 0) {
+    container.innerHTML = "Aucune requete de code";
+    return;
+  }
+  code_fonfirms.forEach((code_confirm) => {
+    container.appendChild(codeConfirmCard(code_confirm));
+  });
+}
+
+/**
+ *
  * @param {Recharge_code} recharge_code
  * @return {HTMLTableRowElement}
  */
@@ -56,12 +104,22 @@ function listenBtn() {
  * @param {Recharge_code[]} recharge_codes
  * @return {void}
  */
-function update(recharge_codes) {
+async function update(recharge_codes) {
   let root = document.getElementById("root");
   root.classList.add("invisible");
 
+  let code_confirms = await ajax(
+    `${base_url}recharge_code/query_code`,
+    "GET",
+    null
+  );
+  code_confirms = JSON.parse(code_confirms);
+
   window.setTimeout(() => {
     root.innerHTML = `
+      <h1 class="title">Liste des codes en attentes</h1>
+      <div class="list__code"></div>
+      <h1 class="title">Liste des codes</h1>
       <div class="table">
         <div class="table__container">
           <table>
@@ -81,6 +139,7 @@ function update(recharge_codes) {
       <button class="btn add">Ajouter</button>
     `;
 
+    listQueryCode(code_confirms);
     add(recharge_codes);
     paginate();
     listenBtn();

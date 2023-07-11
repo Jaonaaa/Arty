@@ -15,7 +15,12 @@
     cursor: pointer;
     height: 15px;
     transition: 300ms;
-    margin-top: 5px;
+    margin-top: 10px;
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+    }
   }
 
   &__toggle.active {

@@ -24,12 +24,22 @@ function sendForm() {
  *
  * @return {void}
  */
+function back() {
+  let back = document.querySelector(".back");
+  back.addEventListener("click", renderSport);
+}
+
+/**
+ *
+ * @return {void}
+ */
 function update() {
   let root = document.getElementById("root");
   root.classList.add("invisible");
 
   window.setTimeout(() => {
     root.innerHTML = `
+      <img src="${base_url}assets/img/arrow_back.png" class="back" />
       <form class="form">
         <h1 class="form__title">Inserer un sport</h1>
         <div class="input__container">
@@ -46,6 +56,7 @@ function update() {
 
     root.classList.remove("invisible");
     sendForm();
+    back();
   }, 300);
 }
 
