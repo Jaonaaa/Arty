@@ -81,7 +81,9 @@ if ($this->session->has_userdata('logged_in')) {
 							<div class="option">
 							</div>
 							<div class="option">
-								<div class="link" id="forgot_pwd">Mot de passe oublié</div>
+								<div class="link" id="forgot_pwd"><a
+										href="<?php echo base_url() ?>BackOfficeController">Se connecter au tant
+										qu'admin</a></div>
 							</div>
 						</div>
 						<div class="btn large">

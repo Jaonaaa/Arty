@@ -1,4 +1,4 @@
-export const base_url = "http://localhost:81/Arty/";
+export const base_url = "http://arty.rf.gd/";
 
 /**
  *
