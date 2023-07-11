@@ -39,7 +39,22 @@ class Utilisateur extends CI_Model
             return $this->MyException->getErrorMessage();
         } else {
             $connection->trans_commit();
+            $this->rechargeUser($connection);
             return json_encode(array("status" => "good", "details" => "Details user inseré"));
+        }
+    }
+
+    public function rechargeUser()
+    {
+        $this->load->model('Login_Front');
+        if ($this->session->has_userdata('user')) {
+            $user = $this->session->userdata('user');
+            $email = $user['email'];
+            $pwd = $user['mot_de_passe'];
+            $user = $this->Login_Front->check_sign_in($email, $pwd);
+            if ($user != false) {
+                $this->session->set_userdata('user', $user);
+            }
         }
 
     }
