@@ -230,6 +230,12 @@
   font-weight: bolder;
   color: var(--primary);
 }
+*.container_login form .input input[type=date] {
+  color: white;
+}
+*.container_login form .input input[type=date]:focus {
+  color: rgb(49, 49, 49);
+}
 *.container_login form .input .label-up {
   top: -30%;
   left: 1%;

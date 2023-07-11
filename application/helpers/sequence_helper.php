@@ -1,6 +1,8 @@
 <?php
 
-function nextval($sequence) {
+
+function nextval($sequence)
+{
   $CI =& get_instance();
   $CI->load->database();
 
@@ -11,4 +13,6 @@ function nextval($sequence) {
     return $row->valeur;
   }
   return null;
+
 }
+
